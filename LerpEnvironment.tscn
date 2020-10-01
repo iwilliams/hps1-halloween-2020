@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TempEnv.tres" type="Environment" id=1]
+[ext_resource path="res://LerpEnvironment.gd" type="Script" id=2]
+
+
+[node name="LerpEnvironment" type="WorldEnvironment"]
+environment = ExtResource( 1 )
+script = ExtResource( 2 )
+AmbientLight1Color = Color( 1, 0.843137, 0.662745, 1 )
+AmbientLight1Energy = 0.5
+AmbientLight2Energy = 0.5
