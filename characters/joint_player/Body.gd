@@ -2,17 +2,32 @@ extends RigidBody
 
 
 var dir = Vector3.ZERO
-
-
+var speed = 5
+var accel = 50
 
 func _integrate_forces(state):
-    var target_velocity = dir * 50
-    state.linear_velocity = state.linear_velocity.move_toward(target_velocity, state.step * 20)
+    if self.mode == RigidBody.MODE_KINEMATIC:
+        state.transform.origin += dir * speed * state.step
+    else:
+        var target_velocity = dir * speed
+        var old_y = state.linear_velocity.y
+        state.linear_velocity = state.linear_velocity.move_toward(target_velocity, state.step * accel)
+        state.linear_velocity.y = old_y
+        
+        print($RayCast.is_colliding())
+
+        if $RayCast.is_colliding():
+            var col = $RayCast.get_collision_point()
+            print(col.y)
+            state.transform.origin.y = stepify(col.y, 0.01) + .8
+        else:
+            state.linear_velocity.y += -9.8 * 2 * state.step
+            
     return
-    angular_velocity = state.angular_velocity.move_toward(Vector3(0, -1 * mouse_movement.x * 100000, 0), state.step * 200)
+#    angular_velocity = state.angular_velocity.move_toward(Vector3(0, -1 * mouse_movement.x * 100000, 0), state.step * 200)
 #    state.linear_velocity = dir
-    mouse_movement = Vector2()
-    pass
+#    mouse_movement = Vector2()
+#    pass
 
 func _process(delta):
 #    dir.z = Input.get_action_strength("move_forwards")

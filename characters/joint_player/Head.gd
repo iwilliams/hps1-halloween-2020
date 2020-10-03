@@ -1,6 +1,7 @@
 extends RigidBody
 
-var holding = false
+var holding = null
+var holding_joint = null
 
 
 func _ready():
@@ -13,22 +14,48 @@ func _physics_process(delta):
         var joint := Generic6DOFJoint.new()
         joint.set_node_a(self.get_path())
         joint.set_node_b(collider.get_path())
-        joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-        joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-        joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+#        joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+#        joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+#        joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
         (collider as RigidBody).angular_damp = 20
         collider.mode = RigidBody.MODE_RIGID
         collider.add_child(joint)
-        holding = joint
+        holding_joint = joint
+        holding = collider as RigidBody
+        holding.gravity_scale = 0
+#        holding.mass = 1
     elif holding && Input.is_action_just_pressed("grab"):
-        get_node(holding.get_node_b()).angular_damp = -1
-        holding.queue_free()
+        holding.angular_damp = -1
+#        holding.mass = 1
+#        holding.mode = RigidBody.MODE_RIGID
+        holding.gravity_scale = 1
+        holding_joint.queue_free()
         holding = null
+        holding_joint = null
     elif holding && Input.is_action_just_pressed("nail"):
-        get_node(holding.get_node_b()).angular_damp = -1
-        (get_node(holding.get_node_b()) as RigidBody).mode = RigidBody.MODE_STATIC
-        holding.queue_free()
+        holding.mass = 1
+        holding.angular_damp = -1
+        holding.mode = RigidBody.MODE_STATIC
+        holding_joint.queue_free()
         holding = null
+        holding = null
+        
+    if holding:
+        var hold_rb := holding as RigidBody
+        var bodies = hold_rb.get_colliding_bodies()
+        var limit = bodies.size() == 0
+        holding_joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+        holding_joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+        holding_joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+        
+
+        
+    if ($"../Body/RayCast" as RayCast).get_collider():
+        print("on floor")
+        axis_lock_linear_y = true
+    else:
+        axis_lock_linear_y = false
+
         
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,8 +64,8 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
     var current_transform = state.transform
-    var target_transform = $"../Body/Yaw/Pitch".global_transform
-    var next_transform = current_transform.interpolate_with(target_transform, .8)
+    var target_transform = Transform($"../Body/Yaw/Pitch".global_transform.basis, $"../Body/Yaw/Pitch".global_transform.origin)
+#    var next_transform = current_transform.interpolate_with(target_transform, .8)
     state.set_transform(target_transform)
     
     return
