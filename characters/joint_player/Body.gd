@@ -9,20 +9,20 @@ func _integrate_forces(state):
     if self.mode == RigidBody.MODE_KINEMATIC:
         state.transform.origin += dir * speed * state.step
     else:
-        var target_velocity = dir * speed
+        var target_velocity = dir.normalized() * speed
         var old_y = state.linear_velocity.y
         state.linear_velocity = state.linear_velocity.move_toward(target_velocity, state.step * accel)
         state.linear_velocity.y = old_y
         
-        print($RayCast.is_colliding())
-
-        if $RayCast.is_colliding():
+        if Input.is_action_just_pressed("jump"):
+            state.linear_velocity.y += 5
+        elif $RayCast.is_colliding():
             var col = $RayCast.get_collision_point()
-            print(col.y)
             state.transform.origin.y = stepify(col.y, 0.01) + .8
         else:
             state.linear_velocity.y += -9.8 * 2 * state.step
-            
+    
+#    add_central_force(Vector3.BACK * 49)
     return
 #    angular_velocity = state.angular_velocity.move_toward(Vector3(0, -1 * mouse_movement.x * 100000, 0), state.step * 200)
 #    state.linear_velocity = dir

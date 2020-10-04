@@ -17,7 +17,6 @@ func _process(_delta):
             Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-        
     if Input.is_action_pressed("look_left") or Input.is_action_pressed("look_right"):
         rotation_degrees.y += (Input.get_action_strength("look_left") - Input.get_action_strength("look_right")) * stick_sens
     

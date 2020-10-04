@@ -2,27 +2,42 @@ extends RigidBody
 
 var holding = null
 var holding_joint = null
-
+var grab_by_point = false
 
 func _ready():
     $RayCast.add_exception($"../Body")
 
 
 func _physics_process(delta):
+
     var collider = $RayCast.get_collider()
+    
+    if holding_joint:
+        $MeshInstance.global_transform.origin = holding_joint.global_transform.origin
+    elif $RayCast.is_colliding():
+        $MeshInstance.global_transform.origin = $RayCast.get_collision_point()
+        
     if !holding && Input.is_action_just_pressed("grab") && collider is RigidBody:
+        var col_point = $RayCast.get_collision_point()
         var joint := Generic6DOFJoint.new()
         joint.set_node_a(self.get_path())
         joint.set_node_b(collider.get_path())
-#        joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-#        joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-#        joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-        (collider as RigidBody).angular_damp = 20
         collider.mode = RigidBody.MODE_RIGID
-        collider.add_child(joint)
+
+
+        if grab_by_point:
+            add_child(joint)
+            joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+            joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+            joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+            joint.translation = to_local(col_point)
+        else:
+            collider.add_child(joint)
+            (collider as RigidBody).angular_damp = 20
+            
         holding_joint = joint
         holding = collider as RigidBody
-        holding.gravity_scale = 0
+        holding.gravity_scale = 1
 #        holding.mass = 1
     elif holding && Input.is_action_just_pressed("grab"):
         holding.angular_damp = -1
@@ -43,23 +58,17 @@ func _physics_process(delta):
     if holding:
         var hold_rb := holding as RigidBody
         var bodies = hold_rb.get_colliding_bodies()
-        var limit = bodies.size() == 0
+        var limit = !grab_by_point && bodies.size() == 0
         holding_joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
         holding_joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
         holding_joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
         
 
-        
     if ($"../Body/RayCast" as RayCast).get_collider():
         print("on floor")
         axis_lock_linear_y = true
     else:
         axis_lock_linear_y = false
-
-        
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
 
 
 func _integrate_forces(state):
@@ -68,16 +77,6 @@ func _integrate_forces(state):
 #    var next_transform = current_transform.interpolate_with(target_transform, .8)
     state.set_transform(target_transform)
     
-    return
-#    state.angular_velocity = Vector3.ZERO
-#    if abs(mouse_movement.y) > 0:
-##        rotate_x(.2)
-##        state.set_transform(state.transform.rotated(Vector3.RIGHT, 2))
-##        state.angular_velocity.x = mouse_movement.y
-#    else:
-#        state.angular_velocity.x = 0
-    pass
-    mouse_movement = Vector2()
 
 var mouse_sensitivity = 1
 var mouse_movement = Vector2()

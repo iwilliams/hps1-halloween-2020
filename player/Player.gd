@@ -23,7 +23,7 @@ var acc_air:	= 7.0
 var gravity_impulse: = 30.0
 var is_grounded: = false
 var threshold: = 0.01
-var max_angle: = 45.0/90.0	#easy to check against normals y value
+var max_angle: = 50.0/90.0	#easy to check against normals y value
 var counterMovement: = 0.01	#0.175
 var state: PhysicsDirectBodyState	#save a reference so no need to pass in functions
 
