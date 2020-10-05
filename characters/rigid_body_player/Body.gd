@@ -16,7 +16,7 @@ func _ready():
 
 func _integrate_forces(state):
     if Input.is_action_just_pressed("jump"):
-        state.linear_velocity.y += 3
+        state.linear_velocity.y += 6
     elif $RayCast.is_colliding():
         is_on_floor = true
         var target_velocity = dir.normalized() * speed

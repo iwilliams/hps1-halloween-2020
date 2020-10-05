@@ -327,6 +327,7 @@ continuous_cd = true
 contacts_reported = 8
 contact_monitor = true
 can_sleep = false
+angular_velocity = Vector3( 10, 0, 0 )
 
 [node name="Plank" type="MeshInstance" parent="Plank"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10055, 0.620163 )
@@ -337,5 +338,28 @@ material/0 = ExtResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10055, 0.620163 )
 shape = SubResource( 19 )
 
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Plank"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../RigidBody")
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.1, -1.293 )
+mass = 0.5
+continuous_cd = true
+can_sleep = false
+angular_damp = 100.0
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="RigidBody"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../RigidBodyPlayer")
+linear_limit_x/damping = 16.0
+linear_limit_y/damping = 16.0
+linear_limit_z/damping = 16.0
+
+[node name="RayCast" type="RayCast" parent="RigidBody"]
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+
 [node name="RigidBodyPlayer" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.207032, -1.29302 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.293 )
+mass = 0.5

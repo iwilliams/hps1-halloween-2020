@@ -1,7 +1,7 @@
 extends RigidBody
 
-onready var body = get_node("../Body")
-onready var pitch = get_node("../Body/Yaw/Pitch")
+onready var body = get_node("../")
+onready var pitch = get_node("../Yaw/Pitch")
 
 func _ready():
     $RayCast.add_exception(body)
@@ -14,7 +14,6 @@ func _ready():
 #        axis_lock_linear_y = false
 
 
-#func _integrate_forces(state):
-#    var current_transform = state.transform
-#    var target_transform = Transform(pitch.global_transform.basis, pitch.global_transform.origin)
-#    state.set_transform(target_transform)
+func _integrate_forces(state):
+    state.transform = pitch.global_transform
+    print("lel")
