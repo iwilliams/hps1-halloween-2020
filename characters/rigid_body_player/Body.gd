@@ -9,6 +9,8 @@ var accel_air = 7
 
 var height = 1.3
 
+onready var head = get_node("../Head")
+
 
 func _ready():
     pass
@@ -16,7 +18,7 @@ func _ready():
 
 func _integrate_forces(state):
     if Input.is_action_just_pressed("jump"):
-        state.linear_velocity.y += 6
+        state.linear_velocity.y += 12
     elif $RayCast.is_colliding():
         is_on_floor = true
         var target_velocity = dir.normalized() * speed
@@ -34,7 +36,10 @@ func _integrate_forces(state):
         var old_y = state.linear_velocity.y
         state.linear_velocity = state.linear_velocity.move_toward(target_velocity, state.step * accel_air)
         state.linear_velocity.y = old_y
-
+        
+    var head_state := PhysicsServer.body_get_direct_state(RID(head))
+    head_state.transform.origin = state.transform.origin
+    head_state.transform.origin.y = $Yaw.global_transform.origin.y
 
 
 func _process(delta):

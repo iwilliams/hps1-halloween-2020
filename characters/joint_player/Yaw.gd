@@ -4,9 +4,31 @@ export var mouse_sens := 0.5
 export var stick_sens := 2.0
 export var is_inverted = false
 
+onready var fps_camera = $Pitch/Camera2
+onready var tps_camera: Camera = $Pitch/Camera
+
 
 func _ready():
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    switch_to_tps()
+
+
+func switch_to_fps():
+    fps_camera.current = true
+    tps_camera.current = false
+    
+    
+func switch_to_tps():
+    fps_camera.current = false
+    tps_camera.current = true
+
+
+func camera_toggle():
+    if tps_camera.current:
+        fps_camera.make_current()
+    else:
+        tps_camera.make_current()
+    
 
 
 func _process(_delta):
@@ -26,6 +48,9 @@ func _process(_delta):
             x_delta *= -1
         $Pitch.rotation_degrees.x += x_delta
         $Pitch.rotation_degrees.x = clamp($Pitch.rotation_degrees.x, -90, 90)
+        
+    if Input.is_action_just_pressed("camera_toggle"):
+        camera_toggle()
 
 
 func _input(event):

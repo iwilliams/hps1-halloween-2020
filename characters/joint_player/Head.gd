@@ -63,12 +63,12 @@ func _physics_process(delta):
         holding_joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
         holding_joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
         
-
-    if ($"../Body/RayCast" as RayCast).get_collider():
-        print("on floor")
-        axis_lock_linear_y = true
-    else:
-        axis_lock_linear_y = false
+#
+#    if ($"../Body/RayCast" as RayCast).get_collider():
+#        print("on floor")
+#        axis_lock_linear_y = true
+#    else:
+#        axis_lock_linear_y = false
 
 
 func _integrate_forces(state):

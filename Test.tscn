@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://UndergroundEnvironment.tres" type="Resource" id=1]
 [ext_resource path="res://LerpEnvironment.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://assets/textures/grass.png" type="Texture" id=4]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=5]
 [ext_resource path="res://assets/textures/wood.tres" type="Material" id=6]
-[ext_resource path="res://characters/rigid_body_player/RigidBodyPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/rigid_body_player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Grabbable.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -320,46 +321,44 @@ material/0 = null
 shape = SubResource( 17 )
 
 [node name="Plank" type="RigidBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.125, -1.89844 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.125, -0.7 )
 collision_layer = 4
 collision_mask = 5
+gravity_scale = 0.0
 continuous_cd = true
 contacts_reported = 8
 contact_monitor = true
 can_sleep = false
-angular_velocity = Vector3( 10, 0, 0 )
+script = ExtResource( 8 )
 
 [node name="Plank" type="MeshInstance" parent="Plank"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10055, 0.620163 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.10055, -0.582218 )
 mesh = SubResource( 18 )
 material/0 = ExtResource( 6 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Plank"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10055, 0.620163 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.10055, -0.582218 )
 shape = SubResource( 19 )
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Plank"]
 nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../RigidBody")
+nodes/node_b = NodePath("../../Player/Head")
+linear_limit_x/upper_distance = 0.2
+linear_limit_x/softness = 0.1
+linear_limit_x/restitution = 0.1
+linear_limit_x/damping = 10.0
+linear_motor_x/target_velocity = 2.0
+linear_motor_x/force_limit = 10.0
+angular_limit_x/enabled = false
+angular_limit_y/enabled = false
+angular_limit_z/enabled = false
 
-[node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.1, -1.293 )
-mass = 0.5
-continuous_cd = true
-can_sleep = false
-angular_damp = 100.0
+[node name="Player" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
 
-[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="RigidBody"]
-nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../RigidBodyPlayer")
-linear_limit_x/damping = 16.0
-linear_limit_y/damping = 16.0
-linear_limit_z/damping = 16.0
+[node name="Position3D" type="Position3D" parent="Player/Body/Yaw/Pitch" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 
-[node name="RayCast" type="RayCast" parent="RigidBody"]
-enabled = true
-cast_to = Vector3( 0, 0, -1 )
+[editable path="Player"]
 
-[node name="RigidBodyPlayer" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.293 )
-mass = 0.5
+[editable path="Player/Body"]
