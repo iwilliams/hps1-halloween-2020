@@ -13,7 +13,6 @@ flags_unshaded = true
 albedo_color = Color( 0.647059, 0.129412, 0.129412, 0.443137 )
 
 [sub_resource type="SphereShape" id=3]
-radius = 0.2
 
 [node name="Player" type="Spatial"]
 
@@ -29,15 +28,32 @@ collision_mask = 5
 gravity_scale = 0.0
 continuous_cd = true
 can_sleep = false
-angular_damp = 20.0
 script = ExtResource( 2 )
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Head"]
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Body")
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+linear_limit_x/damping = 16.0
 angular_limit_x/enabled = false
+angular_motor_x/enabled = true
+angular_motor_x/force_limit = 5.0
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
+linear_limit_y/damping = 16.0
 angular_limit_y/enabled = false
+angular_motor_y/enabled = true
+angular_motor_y/force_limit = 5.0
+linear_limit_z/softness = 0.01
+linear_limit_z/restitution = 0.01
+linear_limit_z/damping = 16.0
 angular_limit_z/enabled = false
+angular_motor_z/enabled = true
+angular_motor_z/force_limit = 5.0
+angular_spring_z/stiffness = 1.0
+angular_spring_z/damping = 1.0
+angular_spring_z/equilibrium_point = 1.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Head"]
 mesh = SubResource( 1 )

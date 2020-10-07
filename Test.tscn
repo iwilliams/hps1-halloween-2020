@@ -157,7 +157,6 @@ environment2 = ExtResource( 1 )
 
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.36025, -7.24228 )
-visible = false
 amount = 10000
 lifetime = 2.0
 visibility_aabb = AABB( -4.59339, -7.52665, -12.9859, 9.18677, 7.71639, 25.9718 )
@@ -165,6 +164,7 @@ process_material = SubResource( 8 )
 draw_pass_1 = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Thunder"
 anims/Thunder = SubResource( 11 )
 
 [node name="StaticBody4" type="StaticBody" parent="."]
@@ -321,7 +321,7 @@ material/0 = null
 shape = SubResource( 17 )
 
 [node name="Plank" type="RigidBody" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.125, -0.7 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.125, -1 )
 collision_layer = 4
 collision_mask = 5
 gravity_scale = 0.0
@@ -347,17 +347,25 @@ linear_limit_x/upper_distance = 0.2
 linear_limit_x/softness = 0.1
 linear_limit_x/restitution = 0.1
 linear_limit_x/damping = 10.0
-linear_motor_x/target_velocity = 2.0
 linear_motor_x/force_limit = 10.0
 angular_limit_x/enabled = false
+angular_motor_x/enabled = true
+angular_motor_x/force_limit = 10.0
 angular_limit_y/enabled = false
+angular_motor_y/enabled = true
+angular_motor_y/force_limit = 10.0
 angular_limit_z/enabled = false
+angular_motor_z/enabled = true
+angular_motor_z/force_limit = 10.0
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
 
 [node name="Position3D" type="Position3D" parent="Player/Body/Yaw/Pitch" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="Head" parent="Player" index="1"]
+collision_mask = 4
 
 [editable path="Player"]
 
