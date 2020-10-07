@@ -5,9 +5,9 @@ func _physics_process(delta):
     var bodies = get_colliding_bodies()
     var limit = bodies.size() == 0
     limit = false
-    $Generic6DOFJoint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
-    $Generic6DOFJoint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
-    $Generic6DOFJoint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+#    $Generic6DOFJoint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+#    $Generic6DOFJoint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
+#    $Generic6DOFJoint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, limit)
 #    if limit:
 #        $Generic6DOFJoint.set_param_x(Generic6DOFJoint.PARAM_LINEAR_UPPER_LIMIT, 0)
 #    else:

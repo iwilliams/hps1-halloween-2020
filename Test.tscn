@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://UndergroundEnvironment.tres" type="Resource" id=1]
 [ext_resource path="res://LerpEnvironment.tscn" type="PackedScene" id=2]
@@ -137,6 +137,14 @@ surfaces/0 = {
 
 [sub_resource type="ConvexPolygonShape" id=19]
 points = PoolVector3Array( 0.0171407, 0.199274, -1.31189, 0.0171407, 0.199274, -1.31189, 0.0171407, 0.199274, -1.31189, 0.0171407, 0.199274, 0, 0.0171407, 0.199274, 0, 0.0171407, 0.199274, 0, 0.0171407, 0, -1.31189, 0.0171407, 0, -1.31189, 0.0171407, 0, -1.31189, 0.0171407, 0, 0, 0.0171407, 0, 0, 0.0171407, 0, 0, -0.0171407, 0.199274, -1.31189, -0.0171407, 0.199274, -1.31189, -0.0171407, 0.199274, -1.31189, -0.0171407, 0.199274, 0, -0.0171407, 0.199274, 0, -0.0171407, 0.199274, 0, -0.0171407, 0, 0, -0.0171407, 0, 0, -0.0171407, 0, 0, -0.0171407, 0, -1.31189, -0.0171407, 0, -1.31189, -0.0171407, 0, -1.31189 )
+
+[sub_resource type="CubeMesh" id=20]
+material = ExtResource( 6 )
+size = Vector3( 0.8, 0.8, 0.8 )
+
+[sub_resource type="ConvexPolygonShape" id=21]
+margin = 0.01
+points = PoolVector3Array( -0.4, 0.4, 0.4, 0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, 0.4, -0.4, -0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, 0.4, 0.4, -0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4, -0.4, -0.4, 0.4, 0.4, 0.4, 0.4, -0.4, -0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, -0.4, -0.4, -0.4, -0.4, 0.4, -0.4, 0.4, -0.4, -0.4 )
 
 [node name="Test" type="Spatial"]
 
@@ -324,7 +332,6 @@ shape = SubResource( 17 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 1.125, -1 )
 collision_layer = 4
 collision_mask = 5
-gravity_scale = 0.0
 continuous_cd = true
 contacts_reported = 8
 contact_monitor = true
@@ -340,32 +347,50 @@ material/0 = ExtResource( 6 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.10055, -0.582218 )
 shape = SubResource( 19 )
 
-[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Plank"]
-nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../Player/Head")
-linear_limit_x/upper_distance = 0.2
-linear_limit_x/softness = 0.1
-linear_limit_x/restitution = 0.1
-linear_limit_x/damping = 10.0
-linear_motor_x/force_limit = 10.0
-angular_limit_x/enabled = false
-angular_motor_x/enabled = true
-angular_motor_x/force_limit = 10.0
-angular_limit_y/enabled = false
-angular_motor_y/enabled = true
-angular_motor_y/force_limit = 10.0
-angular_limit_z/enabled = false
-angular_motor_z/enabled = true
-angular_motor_z/force_limit = 10.0
-
 [node name="Player" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
 
-[node name="Position3D" type="Position3D" parent="Player/Body/Yaw/Pitch" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+[node name="Cube" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.871534, -2.8 )
+collision_layer = 4
+collision_mask = 7
+mass = 4.0
+continuous_cd = true
 
-[node name="Head" parent="Player" index="1"]
-collision_mask = 4
+[node name="MeshInstance" type="MeshInstance" parent="Cube"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Cube"]
+shape = SubResource( 21 )
+
+[node name="Cube2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350851, 0.871534, -2.8 )
+collision_layer = 4
+collision_mask = 7
+mass = 4.0
+continuous_cd = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Cube2"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Cube2"]
+shape = SubResource( 21 )
+
+[node name="Cube3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47508, 0.871534, -2.8 )
+collision_layer = 4
+collision_mask = 7
+mass = 4.0
+continuous_cd = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Cube3"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Cube3"]
+shape = SubResource( 21 )
 
 [editable path="Player"]
 
