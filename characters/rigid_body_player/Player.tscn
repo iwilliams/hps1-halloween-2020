@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://characters/rigid_body_player/Body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/rigid_body_player/Head.gd" type="Script" id=2]
+
+[sub_resource type="PhysicsMaterial" id=4]
+friction = 0.0
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.2
@@ -19,7 +22,7 @@ radius = 2.0
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
 collision_mask = 5
-gravity_scale = 2.0
+gravity_scale = 4.0
 continuous_cd = true
 linear_damp = 2.0
 
@@ -28,6 +31,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, 0 )
 collision_layer = 0
 collision_mask = 0
 mode = 2
+physics_material_override = SubResource( 4 )
 gravity_scale = 0.0
 continuous_cd = true
 can_sleep = false
@@ -40,19 +44,16 @@ linear_limit_x/softness = 0.01
 linear_limit_x/restitution = 0.01
 linear_limit_x/damping = 16.0
 angular_limit_x/enabled = false
-angular_motor_x/enabled = true
 angular_motor_x/force_limit = 5.0
 linear_limit_y/softness = 0.01
 linear_limit_y/restitution = 0.01
 linear_limit_y/damping = 16.0
 angular_limit_y/enabled = false
-angular_motor_y/enabled = true
 angular_motor_y/force_limit = 5.0
 linear_limit_z/softness = 0.01
 linear_limit_z/restitution = 0.01
 linear_limit_z/damping = 16.0
 angular_limit_z/enabled = false
-angular_motor_z/enabled = true
 angular_motor_z/force_limit = 5.0
 angular_spring_z/stiffness = 1.0
 angular_spring_z/damping = 1.0

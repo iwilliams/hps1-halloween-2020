@@ -6,6 +6,7 @@ var dir = Vector3.ZERO
 var speed = 5
 var accel = 50
 var accel_air = 7
+var jump = 15
 
 var height = 1.3
 
@@ -18,7 +19,7 @@ func _ready():
 
 func _integrate_forces(state):
     if Input.is_action_just_pressed("jump"):
-        state.linear_velocity.y += 12
+        state.linear_velocity.y += jump
     elif $RayCast.is_colliding():
         is_on_floor = true
         var target_velocity = dir.normalized() * speed

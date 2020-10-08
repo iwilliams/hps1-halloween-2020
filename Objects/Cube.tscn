@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/textures/wood.tres" type="Material" id=1]
+[ext_resource path="res://Grabbable.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 1 )
+size = Vector3( 0.8, 0.8, 0.8 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+margin = 0.01
+points = PoolVector3Array( -0.4, 0.4, 0.4, 0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, 0.4, -0.4, -0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, 0.4, 0.4, -0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, -0.4, -0.4, -0.4, 0.4, -0.4, -0.4, -0.4, -0.4, 0.4, 0.4, 0.4, 0.4, -0.4, -0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, 0.4, 0.4, 0.4, -0.4, -0.4, -0.4, -0.4, -0.4, 0.4, -0.4, 0.4, -0.4, -0.4 )
+
+[node name="Cube" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.871534, -2.8 )
+collision_layer = 4
+collision_mask = 7
+mass = 10.0
+continuous_cd = true
+contacts_reported = 8
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+shape = SubResource( 2 )

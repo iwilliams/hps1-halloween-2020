@@ -10,7 +10,7 @@ onready var tps_camera: Camera = $Pitch/Camera
 
 func _ready():
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    switch_to_tps()
+    switch_to_fps()
 
 
 func switch_to_fps():
