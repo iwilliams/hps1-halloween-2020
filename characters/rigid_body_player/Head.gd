@@ -8,37 +8,15 @@ var holding
 var holding_joint
 var og_mass
 
-var kp: float = 1.0
-var ki: float = 0.0
-var kd: float = 0.1
-
-var prevError = Vector3()
-var p = Vector3()
-var i = Vector3()
-var d = Vector3()
-
-func getOutput(currentError, delta: float):
-    p = currentError
-    i += p * delta
-    d = (p - prevError) / delta
-    prevError = currentError
-    
-    return p*kp + i*ki + d*kd;
-
 
 func _integrate_forces(state: PhysicsDirectBodyState):
     if mode == RigidBody.MODE_RIGID:
         state.transform.origin = pitch.global_transform.origin
 #        error_correct_basic(state)
         error_correct_backwards_pd(state)
-        
-#        if holding.linear_velocity.y > body.linear_velocity.y:
-#            body.add_central_force(Vector3(0, state.linear_velocity.y - holding.linear_velocity.y, 0))
-#            print("CORRECT")
-#        else:
-#            print("NO CORRECT   ")
     else:
         state.transform = pitch.global_transform
+
 
 # https://digitalopus.ca/site/pd-controllers/
 func error_correct_backwards_pd(state: PhysicsDirectBodyState) -> void:
@@ -61,9 +39,7 @@ func error_correct_backwards_pd(state: PhysicsDirectBodyState) -> void:
 
     var x := Vector3()
     var xMag: float
-    
-
-    
+        
     # https://www.euclideanspace.com/maths/geometry/rotations/conversions/quaternionToAngle/index.htm
     var q1: Quat = Quat(q.x, q.y, q.z, q.w)
     if q1.w > 1:
@@ -78,27 +54,21 @@ func error_correct_backwards_pd(state: PhysicsDirectBodyState) -> void:
     
     var is_colliding = (holding as RigidBody).get_colliding_bodies().size()
     if xMag < .1 && !is_colliding:
-#        print('hard correct')
         state.transform = pitch.global_transform
-    else:
-        pass
-#        print("PD")
     
     x = x.normalized()
     x = Vector3(deg2rad(x.x), deg2rad(x.y), deg2rad(x.z))
     
-
     var pidv: Vector3 = kp * x * xMag - kd * angular_velocity
-    var rotInertia2World: Quat = global_transform.basis.get_rotation_quat() * get_inverse_inertia_tensor().inverse().get_rotation_quat() # inverse the inverse??
+    var rotInertia2World: Quat = global_transform.basis.get_rotation_quat() * get_inverse_inertia_tensor().inverse().get_rotation_quat() # inverse the inverse?? seems like we need to?
     pidv = rotInertia2World.inverse() * pidv
-    pidv *= state.inverse_inertia # inverse the inverse?
+    pidv *= state.inverse_inertia # inverse the inverse?, doesn't seem like we need to
     pidv = rotInertia2World * pidv
     var maximum = 50
     if is_colliding:
         maximum = 10
     pidv = Vector3(clamp(pidv.x, -maximum, maximum), clamp(pidv.y, -maximum, maximum), clamp(pidv.z, -maximum, maximum))
     add_torque(pidv)
-    pass
     
 
 func error_correct_basic(state: PhysicsDirectBodyState) -> void:
@@ -141,6 +111,7 @@ func _physics_process(delta):
         og_mass = holding.mass
         holding.mass = 1
         mode = RigidBody.MODE_RIGID
+        $InteractPlayer.play(0)
 #        holding.mass = 1
     elif holding && Input.is_action_just_pressed("grab"):
         holding.angular_damp = -1

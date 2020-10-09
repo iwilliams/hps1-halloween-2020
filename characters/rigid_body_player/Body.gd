@@ -18,7 +18,7 @@ func _ready():
 
 
 func _integrate_forces(state):
-    if Input.is_action_just_pressed("jump"):
+    if Input.is_action_just_pressed("jump") and is_on_floor:
         state.linear_velocity.y += jump
     elif $RayCast.is_colliding():
         is_on_floor = true
@@ -32,7 +32,6 @@ func _integrate_forces(state):
             state.transform.origin.y = proper_origin
     else:
         is_on_floor = false
-#        state.linear_velocity.y += -9.8 * 2 * state.step
         var target_velocity = dir.normalized() * speed
         var old_y = state.linear_velocity.y
         state.linear_velocity = state.linear_velocity.move_toward(target_velocity, state.step * accel_air)
@@ -41,6 +40,16 @@ func _integrate_forces(state):
     var head_state := PhysicsServer.body_get_direct_state(RID(head))
     head_state.transform.origin = state.transform.origin
     head_state.transform.origin.y = $Yaw.global_transform.origin.y
+    
+    var xz_length = abs(dir.length())
+    var footsteps_playing = $FootstepGravelPlayer.is_playing()
+    if is_on_floor:
+        if xz_length > 0.2 and !footsteps_playing:
+            $FootstepGravelPlayer.play()
+        elif xz_length <= 0.2 and footsteps_playing:
+            $FootstepGravelPlayer.stop()
+    elif footsteps_playing:
+        $FootstepGravelPlayer.stop()
 
 
 func _process(delta):
@@ -50,3 +59,4 @@ func _process(delta):
     dir -= base_transform.basis.z.normalized() * Input.get_action_strength("move_backward")
     dir += base_transform.basis.x.normalized() * Input.get_action_strength("move_left")
     dir -= base_transform.basis.x.normalized() * Input.get_action_strength("move_right")
+
