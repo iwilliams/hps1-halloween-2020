@@ -46,7 +46,7 @@ func _process(_delta):
         var x_delta = (Input.get_action_strength("look_up") - Input.get_action_strength("look_down")) * stick_sens
         if is_inverted:
             x_delta *= -1
-        $Pitch.rotation_degrees.x += x_delta
+        $Pitch.rotation_degrees.x -= x_delta
         $Pitch.rotation_degrees.x = clamp($Pitch.rotation_degrees.x, -90, 90)
         
     if Input.is_action_just_pressed("camera_toggle"):
@@ -59,5 +59,5 @@ func _input(event):
         var x_delta = mouse_sens * event.relative.y
         if is_inverted:
             x_delta *= -1
-        $Pitch.rotation_degrees.x += x_delta
+        $Pitch.rotation_degrees.x -= x_delta
         $Pitch.rotation_degrees.x = clamp($Pitch.rotation_degrees.x, -90, 90)

@@ -8,11 +8,58 @@ var holding
 var holding_joint
 var og_mass
 
+var grab_on_next_frame
+
+func grab(to_grab: RigidBody):
+    var joint := GrabJoint.instance()
+    joint.set_node_a(self.get_path())
+    joint.set_node_b(to_grab.get_path())
+    joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+    joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+    joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
+    to_grab.mode = RigidBody.MODE_RIGID
+    to_grab.add_child(joint)
+    holding_joint = joint
+    holding = to_grab
+    holding.gravity_scale = 0
+    og_mass = holding.mass
+    holding.mass = 1
+    mode = RigidBody.MODE_RIGID
+    $InteractPlayer.play(0)
+    
+    
+func drop():
+    holding.angular_damp = -1
+    holding.mass = og_mass
+    holding.gravity_scale = 1
+    holding.drop()
+    holding.remove_child(holding_joint)
+    holding_joint.queue_free()
+    holding = null
+    holding_joint = null
+
 
 func _integrate_forces(state: PhysicsDirectBodyState):
+    var collider = $RayCast.get_collider()
+    
+    if grab_on_next_frame != null:
+        grab(grab_on_next_frame)
+        grab_on_next_frame = null
+        return
+            
+    if !holding && Input.is_action_just_pressed("grab") && collider is RigidBody:
+        state.transform = state.transform.looking_at(collider.global_transform.origin, Vector3.UP)
+        grab_on_next_frame = collider
+        return
+    elif holding && Input.is_action_just_pressed("grab"):
+        drop()
+        mode = RigidBody.MODE_CHARACTER
+    elif holding && Input.is_action_just_pressed("nail"):
+        holding.mode = RigidBody.MODE_STATIC
+        drop()
+        mode = RigidBody.MODE_CHARACTER
     if mode == RigidBody.MODE_RIGID:
         state.transform.origin = pitch.global_transform.origin
-#        error_correct_basic(state)
         error_correct_backwards_pd(state)
     else:
         state.transform = pitch.global_transform
@@ -52,7 +99,7 @@ func error_correct_backwards_pd(state: PhysicsDirectBodyState) -> void:
     else:
         x = Vector3(q1.x / s, q1.y / s, q1.z / s)
     
-    var is_colliding = (holding as RigidBody).get_colliding_bodies().size()
+    var is_colliding = holding != null and (holding as RigidBody).get_colliding_bodies().size()
     if xMag < .1 && !is_colliding:
         state.transform = pitch.global_transform
     
@@ -80,58 +127,6 @@ func error_correct_basic(state: PhysicsDirectBodyState) -> void:
     else:
         torque = global_transform.basis.get_rotation_quat() * torque * 20
     add_torque(torque)
-
-
-func _physics_process(delta):
-    var collider = $RayCast.get_collider()
-            
-    if !holding && Input.is_action_just_pressed("grab") && collider is RigidBody:
-        var col_point = $RayCast.get_collision_point()
-        var joint := GrabJoint.instance()
-        joint.set_node_a(self.get_path())
-        joint.set_node_b(collider.get_path())
-        collider.mode = RigidBody.MODE_RIGID
-        var grab_by_point = true
-
-        if grab_by_point:
-            collider.add_child(joint)
-            joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-            joint.set_flag_y(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-            joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
-            joint.translation = collider.to_local(col_point)
-        else:
-            collider.add_child(joint)
-            (collider as RigidBody).angular_damp = 20
-            
-        holding_joint = joint
-        holding = collider as RigidBody
-        holding.gravity_scale = 0
-        holding.grab()
-        holding.target_basis = joint.global_transform.basis
-        og_mass = holding.mass
-        holding.mass = 1
-        mode = RigidBody.MODE_RIGID
-        $InteractPlayer.play(0)
-#        holding.mass = 1
-    elif holding && Input.is_action_just_pressed("grab"):
-        holding.angular_damp = -1
-        holding.mass = og_mass
-        holding.drop()
-#        holding.mode = RigidBody.MODE_RIGID
-        holding.gravity_scale = 1
-        holding_joint.queue_free()
-        holding = null
-        holding_joint = null
-        mode = RigidBody.MODE_CHARACTER
-    elif holding && Input.is_action_just_pressed("nail"):
-        holding.mass = og_mass
-        holding.angular_damp = -1
-        holding.drop()
-        holding.mode = RigidBody.MODE_STATIC
-        holding_joint.queue_free()
-        holding = null
-        holding_joint = null
-        mode = RigidBody.MODE_CHARACTER
 
 
 func get_rotation_error() -> Quat:

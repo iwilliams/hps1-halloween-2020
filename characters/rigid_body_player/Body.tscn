@@ -46,11 +46,10 @@ script = ExtResource( 1 )
 [node name="Pitch" type="Spatial" parent="Yaw"]
 
 [node name="Camera" type="Camera" parent="Yaw/Pitch"]
-transform = Transform( -1, -7.10543e-15, 3.25841e-07, 1.11653e-07, 0.93946, 0.34266, -3.06115e-07, 0.34266, -0.93946, 0, 0.435253, -1.08063 )
+transform = Transform( 1, 0, 0, 0, 0.93946, 0.34266, 0, -0.34266, 0.93946, 0, 0.435, 1.081 )
 current = true
 
 [node name="Camera2" type="Camera" parent="Yaw/Pitch"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 current = true
 
 [node name="FootstepGravelPlayer" type="AudioStreamPlayer3D" parent="."]

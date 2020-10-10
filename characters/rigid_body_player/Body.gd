@@ -18,7 +18,7 @@ func _ready():
 
 
 func _integrate_forces(state):
-    if Input.is_action_just_pressed("jump") and is_on_floor:
+    if Input.is_action_just_pressed("jump") and is_on_floor and $RayCast.get_collider() != head.holding:
         state.linear_velocity.y += jump
     elif $RayCast.is_colliding():
         is_on_floor = true
@@ -55,8 +55,8 @@ func _integrate_forces(state):
 func _process(delta):
     var base_transform = $Yaw.global_transform
     dir = Vector3.ZERO
-    dir += base_transform.basis.z.normalized() * Input.get_action_strength("move_forward")
-    dir -= base_transform.basis.z.normalized() * Input.get_action_strength("move_backward")
-    dir += base_transform.basis.x.normalized() * Input.get_action_strength("move_left")
-    dir -= base_transform.basis.x.normalized() * Input.get_action_strength("move_right")
+    dir -= base_transform.basis.z.normalized() * Input.get_action_strength("move_forward")
+    dir += base_transform.basis.z.normalized() * Input.get_action_strength("move_backward")
+    dir -= base_transform.basis.x.normalized() * Input.get_action_strength("move_left")
+    dir += base_transform.basis.x.normalized() * Input.get_action_strength("move_right")
 
