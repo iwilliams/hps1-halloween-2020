@@ -4,5 +4,3 @@
 
 [node name="BackwardsPD" type="Node"]
 script = ExtResource( 1 )
-frequency = 60.0
-damping = 0.5

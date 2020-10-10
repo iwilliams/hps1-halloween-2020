@@ -11,7 +11,8 @@ var og_mass
 var grab_on_next_frame
 
 func grab(to_grab: RigidBody):
-    var joint := GrabJoint.instance()
+#    var joint := GrabJoint.instance()
+    var joint := Generic6DOFJoint.new()
     joint.set_node_a(self.get_path())
     joint.set_node_b(to_grab.get_path())
     joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
@@ -19,6 +20,7 @@ func grab(to_grab: RigidBody):
     joint.set_flag_z(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)
     to_grab.mode = RigidBody.MODE_RIGID
     to_grab.add_child(joint)
+    $HoldPosition.global_transform = to_grab.global_transform
     holding_joint = joint
     holding = to_grab
     holding.gravity_scale = 0
@@ -65,7 +67,11 @@ func _integrate_forces(state: PhysicsDirectBodyState):
                 pitch.global_transform.basis.get_rotation_quat(),
                 state,
                 self,
-                holding != null and (holding as RigidBody).get_colliding_bodies().size()
+                holding != null and (holding as RigidBody).get_colliding_bodies().size() > 0
         )
     else:
         state.transform = pitch.global_transform
+        
+    if holding:
+        $HoldPosition.global_transform.origin = holding.global_transform.origin
+        holding.target_basis = $HoldPosition.global_transform.basis

@@ -18,6 +18,8 @@ export(float) var threshold = .1
 var kp = (6*frequency)*(6*frequency)* 0.25
 var kd = 4.5*frequency*damping
 
+export(float) var maximum = 50
+
 
 func get_rotation_error(current_rotation: Quat, desired_rotation: Quat) -> Quat:
     var error: Quat = desired_rotation * current_rotation.inverse()
@@ -25,7 +27,9 @@ func get_rotation_error(current_rotation: Quat, desired_rotation: Quat) -> Quat:
 
 
 # https://digitalopus.ca/site/pd-controllers/
-func set_torque(current_rotation: Quat, desired_rotation: Quat, state: PhysicsDirectBodyState, body: RigidBody, is_colliding := false) -> void:   
+func set_torque(current_rotation: Quat, desired_rotation: Quat, state: PhysicsDirectBodyState, body: RigidBody, is_colliding := false, debug = false) -> void:   
+    kp = (6*frequency)*(6*frequency)* 0.25
+    kd = 4.5*frequency*damping
     var dt = state.step
     var g: float = 1 / (1 + kd * dt + kp * dt * dt)
     var ksg: float = kp * g
@@ -55,17 +59,19 @@ func set_torque(current_rotation: Quat, desired_rotation: Quat, state: PhysicsDi
     
     if xMag < threshold && !is_colliding:
         state.transform.basis = desired_rotation
-    
+            
     x = x.normalized()
     x = Vector3(deg2rad(x.x), deg2rad(x.y), deg2rad(x.z))
     
     var pidv: Vector3 = kp * x * xMag - kd * body.angular_velocity
-    var rotInertia2World: Quat = body.global_transform.basis.get_rotation_quat() * body.get_inverse_inertia_tensor().inverse().get_rotation_quat() # inverse the inverse?? seems like we need to?
+    var rotInertia2World: Quat = body.global_transform.basis.get_rotation_quat() * body.get_inverse_inertia_tensor().get_rotation_quat() # inverse the inverse?? seems like we need to?
+    if debug:
+        print(body.get_inverse_inertia_tensor().inverse().get_rotation_quat())
     pidv = rotInertia2World.inverse() * pidv
     pidv *= state.inverse_inertia # inverse the inverse?, doesn't seem like we need to
     pidv = rotInertia2World * pidv
-    var maximum = 50
+    var tmp_maximum = maximum
     if is_colliding:
-        maximum = 10
-    pidv = Vector3(clamp(pidv.x, -maximum, maximum), clamp(pidv.y, -maximum, maximum), clamp(pidv.z, -maximum, maximum))
+        tmp_maximum = 10
+    pidv = Vector3(clamp(pidv.x, -tmp_maximum, tmp_maximum), clamp(pidv.y, -tmp_maximum, tmp_maximum), clamp(pidv.z, -tmp_maximum, tmp_maximum))
     body.add_torque(pidv)

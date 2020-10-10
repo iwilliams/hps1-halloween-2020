@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UndergroundEnvironment.tres" type="Resource" id=1]
 [ext_resource path="res://LerpEnvironment.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://modular_building/WallWindow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://modular_building/Wall.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sounds/rain_1.ogg" type="AudioStream" id=10]
-[ext_resource path="res://objects/Plank.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0.0869141, 0.0869141, 0.0869141, 1 )
@@ -219,48 +218,12 @@ shape = SubResource( 13 )
 [node name="Player" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
 
-[node name="Cube" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.177669, 0, -0.98409, 0, 1, 0, 0.98409, 0, -0.177669, 6.04549, 0.417998, -6.59519 )
-mass = 1.0
-contacts_reported = 16
-
-[node name="Cube2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.391486, 0, -0.920184, 0, 1, 0, 0.920184, 0, 0.391486, 5.99244, 0.417998, -5.50507 )
-mass = 5.0
-contacts_reported = 16
-
-[node name="Cube3" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.0534862, 0, -0.998569, 0, 1, 0, 0.998569, 0, -0.0534862, 5.9406, 1.27501, -6.05103 )
-mass = 5.0
-contacts_reported = 16
-
-[node name="Cube4" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.198222, 0, -0.980157, 0, 1, 0, 0.980157, 0, -0.198222, 5.60911, 0.431527, -4.50144 )
-mass = 5.0
-contacts_reported = 16
-
-[node name="Cube5" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.689202, 0, 0.724569, 0, 1, 0, -0.724569, 0, 0.689202, 5.73976, 1.28813, -4.99183 )
-mass = 5.0
-contacts_reported = 16
-
-[node name="Cube6" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.995311, 0, -0.0967316, 0, 1, 0, 0.0967316, 0, 0.995311, 5.79959, 2.1419, -5.54958 )
-mass = 5.0
-contacts_reported = 16
-
 [node name="RainPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
 
-[node name="Plank" parent="." instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 0, -1, 0.99599, 0.0894679, -4.35361e-08, 0.0894679, -0.99599, -3.91077e-09, 3.14539, 0.124753, -9.15066 )
-
-[node name="Plank2" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.0455697, -0.507299, -0.860564, 0.99599, 0.0894679, -4.35361e-08, 0.0769929, -0.857113, 0.509342, 3.14539, 0.211934, -9.15066 )
-
-[node name="Plank3" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.0823586, -0.916847, -0.390651, 0.99599, 0.0894679, -4.35361e-08, 0.0349507, -0.389084, 0.920539, 3.14539, 0.386006, -9.15066 )
+[node name="Cube" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96751, 0.871534, -4.50288 )
 
 [editable path="Player"]
 
