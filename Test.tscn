@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UndergroundEnvironment.tres" type="Resource" id=1]
 [ext_resource path="res://LerpEnvironment.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://modular_building/WallWindow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://modular_building/Wall.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sounds/rain_1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://objects/Plank.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0.0869141, 0.0869141, 0.0869141, 1 )
@@ -224,6 +225,9 @@ autoplay = true
 
 [node name="Cube" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96751, 0.871534, -4.50288 )
+
+[node name="Plank" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.417477, 1.125, -5.87426 )
 
 [editable path="Player"]
 

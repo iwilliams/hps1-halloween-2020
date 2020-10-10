@@ -11,8 +11,8 @@ var og_mass
 var grab_on_next_frame
 
 func grab(to_grab: RigidBody):
-#    var joint := GrabJoint.instance()
-    var joint := Generic6DOFJoint.new()
+    var joint := GrabJoint.instance()
+#    var joint := Generic6DOFJoint.new()
     joint.set_node_a(self.get_path())
     joint.set_node_b(to_grab.get_path())
     joint.set_flag_x(Generic6DOFJoint.FLAG_ENABLE_ANGULAR_LIMIT, false)

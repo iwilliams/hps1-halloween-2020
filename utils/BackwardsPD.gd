@@ -64,9 +64,7 @@ func set_torque(current_rotation: Quat, desired_rotation: Quat, state: PhysicsDi
     x = Vector3(deg2rad(x.x), deg2rad(x.y), deg2rad(x.z))
     
     var pidv: Vector3 = kp * x * xMag - kd * body.angular_velocity
-    var rotInertia2World: Quat = body.global_transform.basis.get_rotation_quat() * body.get_inverse_inertia_tensor().get_rotation_quat() # inverse the inverse?? seems like we need to?
-    if debug:
-        print(body.get_inverse_inertia_tensor().inverse().get_rotation_quat())
+    var rotInertia2World: Quat = body.global_transform.basis.orthonormalized().get_rotation_quat() * body.get_inverse_inertia_tensor().orthonormalized().get_rotation_quat() # inverse the inverse?? seems like we need to?
     pidv = rotInertia2World.inverse() * pidv
     pidv *= state.inverse_inertia # inverse the inverse?, doesn't seem like we need to
     pidv = rotInertia2World * pidv

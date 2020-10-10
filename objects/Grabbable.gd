@@ -9,7 +9,6 @@ func _integrate_forces(state):
     if target_basis != null and backwards_pd != null:
         var is_colliding = get_colliding_bodies().size() > 0
         if !is_colliding:
-            print('correct')
             ($BackwardsPD as BackwardsPD).set_torque(
                     global_transform.basis.get_rotation_quat(), 
                     target_basis.get_rotation_quat(),
