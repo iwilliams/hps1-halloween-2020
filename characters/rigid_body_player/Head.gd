@@ -62,12 +62,17 @@ func _integrate_forces(state: PhysicsDirectBodyState):
 
     if mode == RigidBody.MODE_RIGID:
         state.transform.origin = pitch.global_transform.origin
+        var colliding = holding != null and (holding.treat_as_colliding or (holding as RigidBody).get_colliding_bodies().size() > 0)
+        if colliding and state.transform.basis.z.dot(pitch.global_transform.basis.z) < .5:
+            drop()
+            print("force drop")
+            return
         ($BackwardsPD as BackwardsPD).set_torque(
                 state.transform.basis.get_rotation_quat(), 
                 pitch.global_transform.basis.get_rotation_quat(),
                 state,
                 self,
-                holding != null and (holding as RigidBody).get_colliding_bodies().size() > 0
+                colliding
         )
     else:
         state.transform = pitch.global_transform

@@ -6,14 +6,13 @@
 [node name="Player" type="Spatial"]
 
 [node name="Body" parent="." instance=ExtResource( 1 )]
-collision_mask = 5
-gravity_scale = 4.0
-continuous_cd = true
-linear_damp = 2.0
-
-[node name="Yaw" parent="Body" index="3"]
-transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.125, 0 )
 
 [node name="Head" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 1.4, 0 )
 
-[editable path="Body"]
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Head"]
+nodes/node_a = NodePath("../../Body")
+nodes/node_b = NodePath("..")
+angular_limit_x/enabled = false
+angular_limit_y/enabled = false
+angular_limit_z/enabled = false

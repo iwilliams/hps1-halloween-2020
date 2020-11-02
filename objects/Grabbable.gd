@@ -1,8 +1,10 @@
 extends RigidBody
+class_name Grabbalbe
 
 onready var backwards_pd: BackwardsPD = $BackwardsPD
 
 var target_basis = null
+export(bool) var treat_as_colliding = false
 
 
 func _integrate_forces(state):

@@ -13,15 +13,21 @@ _global_script_classes=[ {
 "class": "BackwardsPD",
 "language": "GDScript",
 "path": "res://utils/BackwardsPD.gd"
+}, {
+"base": "RigidBody",
+"class": "Grabbalbe",
+"language": "GDScript",
+"path": "res://objects/Grabbable.gd"
 } ]
 _global_script_class_icons={
-"BackwardsPD": ""
+"BackwardsPD": "",
+"Grabbalbe": ""
 }
 
 [application]
 
 config/name="hps1-halloween-2020"
-run/main_scene="res://Test.tscn"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -142,7 +148,9 @@ look_down={
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Objects"
+3d_physics/layer_4="Nail"
 
 [rendering]
 
+quality/shading/force_vertex_shading=true
 environment/default_environment="res://default_env.tres"

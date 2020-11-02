@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/textures/grain.png" type="Texture" id=1]
+[ext_resource path="res://assets/materials/psx_material_shader.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/color = null
+shader_param/specular_intensity = null
+shader_param/resolution = 256.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/mix_textures = false
+shader_param/dither_enabled = true
+shader_param/dither_resolution = 1.0
+shader_param/dither_intensity = 0.1
+shader_param/color_depth = 31
+shader_param/dither_luminosity = Vector3( 0.299, 0.587, 0.114 )
+shader_param/albedoTex = ExtResource( 1 )

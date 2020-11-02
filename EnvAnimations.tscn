@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Animation" id=1]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("LerpEnvironment:environment:adjustment_brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 2.14356 ),
+"update": 0,
+"values": [ 0.6, 0.96, 0.6, 0.96, 8.0, 0.6 ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+autoplay = "Thunder"
+anims/Thunder = SubResource( 1 )

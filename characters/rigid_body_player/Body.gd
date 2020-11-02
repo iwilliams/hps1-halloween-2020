@@ -28,7 +28,7 @@ func _integrate_forces(state):
         state.linear_velocity.y = old_y
         var col = $RayCast.get_collision_point()
         var proper_origin = stepify(col.y, 0.01)
-        if state.linear_velocity.y <= 0 and abs(state.transform.origin.y - proper_origin) > .01: 
+        if state.linear_velocity.y <= 0 and abs(state.transform.origin.y - proper_origin) > .01:
             state.transform.origin.y = proper_origin
     else:
         is_on_floor = false
