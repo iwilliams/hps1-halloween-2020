@@ -55,7 +55,7 @@ func _integrate_forces(state: PhysicsDirectBodyState):
     elif holding && Input.is_action_just_pressed("grab"):
         drop()
         mode = RigidBody.MODE_CHARACTER
-    elif holding && Input.is_action_just_pressed("nail"):
+    elif holding && Input.is_action_just_pressed("nail") && holding.can_weld():
         holding.mode = RigidBody.MODE_STATIC
         drop()
         mode = RigidBody.MODE_CHARACTER
