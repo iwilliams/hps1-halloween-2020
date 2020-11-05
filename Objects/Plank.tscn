@@ -19,7 +19,7 @@ height = 0.2
 [node name="Plank" type="RigidBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 collision_layer = 4
-collision_mask = 5
+collision_mask = 247
 continuous_cd = true
 contacts_reported = 8
 contact_monitor = true

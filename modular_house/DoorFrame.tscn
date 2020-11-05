@@ -42,6 +42,8 @@ extents = Vector3( 0.225, 1.3, 0.1 )
 script = ExtResource( 6 )
 
 [node name="DoorFrame" type="StaticBody" parent="."]
+collision_layer = 64
+collision_mask = 134
 
 [node name="DoorFrame" type="MeshInstance" parent="DoorFrame"]
 mesh = SubResource( 2 )

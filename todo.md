@@ -18,12 +18,14 @@
 [ ] - Wagon/wheelbarrow?
 [ ] - Ending sequence
 [ ] - Outhouse
-[ ] - Create main scene
 [ ] - Itch.io page
 [ ] - Check all materials possibly add color reduction shader?
 [ ] - Wall break SFX
 [ ] - Screen shake
 [ ] - Randomize thunder
 [ ] - Siren SFX
-[ ] - More granular collision layers
+[ ] - Add area to catch/remove destroyed walls
+[ ] - Distribute planks
+[ ] - Create main scene
+[x] - More granular collision layers
 [x] - Add flat terrain with less buggy collision

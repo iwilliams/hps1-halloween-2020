@@ -145,10 +145,15 @@ look_down={
 
 [layer_names]
 
-3d_physics/layer_1="Environment"
+3d_physics/layer_1="Terrain"
 3d_physics/layer_2="Player"
-3d_physics/layer_3="Objects"
+3d_physics/layer_3="Plank"
 3d_physics/layer_4="Nail"
+3d_physics/layer_5="Floor"
+3d_physics/layer_6="Wall"
+3d_physics/layer_7="Frame"
+3d_physics/layer_8="Props"
+3d_physics/layer_9="Door"
 
 [rendering]
 

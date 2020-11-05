@@ -862,7 +862,7 @@ extents = Vector3( 0.409137, 0.281244, 0.354407 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Ground" type="StaticBody" parent="."]
-collision_mask = 7
+collision_mask = 134
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
 mesh = SubResource( 50 )
@@ -874,8 +874,8 @@ shape = SubResource( 51 )
 
 [node name="Sofa" type="RigidBody" parent="."]
 transform = Transform( 0.939893, 0, 0.341471, 0, 1, 0, -0.341471, 0, 0.939893, -3.25751, 1.10855, 2.12335 )
-collision_layer = 4
-collision_mask = 7
+collision_layer = 128
+collision_mask = 247
 mass = 8.0
 
 [node name="sofa" type="MeshInstance" parent="Sofa"]
@@ -902,8 +902,8 @@ shape = SubResource( 9 )
 
 [node name="TV" type="RigidBody" parent="."]
 transform = Transform( 0.918324, 0, 0.395829, 0, 1, 0, -0.395829, 0, 0.918324, -1.34361, 1.71447, 3.87723 )
-collision_layer = 4
-collision_mask = 7
+collision_layer = 128
+collision_mask = 247
 mass = 4.0
 
 [node name="TV" type="MeshInstance" parent="TV"]
@@ -918,8 +918,8 @@ shape = SubResource( 11 )
 
 [node name="EntranceTable" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.921472, 1.00311, 3.98484 )
-collision_layer = 4
-collision_mask = 7
+collision_layer = 128
+collision_mask = 247
 mass = 5.0
 
 [node name="entrance table" type="MeshInstance" parent="EntranceTable"]
@@ -1208,7 +1208,8 @@ transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.11581,
 
 [node name="DebugBox" type="Area" parent="House"]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -6.18765, 1.27631, 3.36218 )
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="House/DebugBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0966477, 0, -0.107522 )
