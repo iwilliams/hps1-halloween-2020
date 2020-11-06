@@ -48,7 +48,7 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         grab(grab_on_next_frame)
         grab_on_next_frame = null
         return
-    if !holding && Input.is_action_just_pressed("grab") && collider is RigidBody:
+    if !holding && Input.is_action_just_pressed("grab") && collider is Grabbalbe:
         state.transform = state.transform.looking_at(collider.global_transform.origin, Vector3.UP)
         grab_on_next_frame = collider
         return
