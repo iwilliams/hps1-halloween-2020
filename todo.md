@@ -11,7 +11,6 @@
 [ ] - Storm cellar?
 [ ] - Wall of trees at area perimeter
 [ ] - Code destruction sequence for walls/roof
-[ ] - Create destructible roof
 [ ] - Coffin/locked room
 [ ] - Wagon/wheelbarrow?
 [ ] - Ending sequence
@@ -23,9 +22,11 @@
 [ ] - Add area to catch/remove destroyed walls
 [ ] - Distribute planks
 [ ] - Create main scene
-[ ] - Nail sfx
+[ ] - Code for nail sfx
 [ ] - Setup props with collision, including trees (Very close to done)
 	- Revist sink collision
+[ ] - Create destructible roof
+[x] - Nail sfx
 [x] - Change footstep sfx based on surface/area, L/R
 [x] - Set up shed (maybe need a 3 wide wall?)
 [x] - More granular collision layers

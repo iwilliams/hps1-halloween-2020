@@ -855,6 +855,9 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="House/DebugBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0966477, 0, -0.107522 )
 shape = SubResource( 48 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="WindowFrame3" parent="House" instance=ExtResource( 26 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -6.91577, 0, 2.76695 )
@@ -1011,7 +1014,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05998, 0.91527, -1.10611 )
 transform = Transform( 0.721207, 0, 0.692719, 0, 1, 0, -0.692719, 0, 0.721207, -13.7348, 0, 4.4245 )
 
 [node name="FloorSquare" parent="Shed" instance=ExtResource( 24 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -1.7, 0, -1.7 )
 
 [node name="DoorFrame" parent="Shed" instance=ExtResource( 27 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
@@ -1025,3 +1028,4 @@ transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, -1.
 [node name="WallFrame3" parent="Shed" instance=ExtResource( 25 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.7, 0, -1.7 )
 [connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
+[connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]

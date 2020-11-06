@@ -1,7 +1,7 @@
 extends RigidBody
 class_name Grabbalbe
 
-onready var backwards_pd: BackwardsPD = $BackwardsPD
+onready var backwards_pd: BackwardsPD = get_node("BackwardsPD")
 
 var target_basis = null
 export(bool) var treat_as_colliding = false
