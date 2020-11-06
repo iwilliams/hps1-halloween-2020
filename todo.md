@@ -1,17 +1,13 @@
-[ ] - Split wood/gravel footsteps into L/R [Trevor WIP]
+
 [ ] - Intro sequence SFX (news cast) [Trevor WIP]
 [ ] - Player mumbling SFX [Trevor WIP]
-[ ] - Intro sequence Graphics (tv "slideshow" + glow?) [Trevor WIP]
 [ ] - Wall break SFX [Trevor WIP]
-[ ] - Siren SFX [Trevor Wip]
-
+[ ] - Add siren to game
 [ ] - Rain occlusion
 [ ] - Rain levels
 [ ] - Increasing storm SFX
-[ ] - Change footstep sfx based on surface/area
 [ ] - Track window progression
 [ ] - Intro sequence programming
-[ ] - Set up shed (maybe need a 3 wide wall?)
 [ ] - Storm cellar?
 [ ] - Wall of trees at area perimeter
 [ ] - Code destruction sequence for walls/roof
@@ -28,7 +24,12 @@
 [ ] - Distribute planks
 [ ] - Create main scene
 [ ] - Nail sfx
-[ ] - Setup props with collision, including trees
+[ ] - Setup props with collision, including trees (Very close to done)
 	- Revist sink collision
+[x] - Change footstep sfx based on surface/area, L/R
+[x] - Set up shed (maybe need a 3 wide wall?)
 [x] - More granular collision layers
 [x] - Add flat terrain with less buggy collision
+[x] - Siren SFX [Trevor Wip]
+[x] - Split wood/gravel footsteps into L/R [Trevor WIP]
+[x] - Intro sequence Graphics (tv "slideshow" + glow?) [Trevor WIP]

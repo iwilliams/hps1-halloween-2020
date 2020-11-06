@@ -10,6 +10,8 @@ var jump = 15
 
 var height = 1.3
 
+var foot_bit = true
+
 onready var head = get_node("../Head")
 
 
@@ -41,6 +43,8 @@ func _integrate_forces(state):
     head_state.transform.origin = state.transform.origin
     head_state.transform.origin.y = $Yaw.global_transform.origin.y
     
+    return
+    
     var xz_length = abs(dir.length())
     var footsteps_playing = $FootstepGravelPlayer.is_playing()
     if is_on_floor:
@@ -60,3 +64,18 @@ func _process(delta):
     dir -= base_transform.basis.x.normalized() * Input.get_action_strength("move_left")
     dir += base_transform.basis.x.normalized() * Input.get_action_strength("move_right")
 
+
+
+func _on_FootStepTimer_timeout():
+    var xz_length = abs(dir.length())
+    if is_on_floor and xz_length > 0.2:
+        var is_wood = $RayCast.get_collider().is_in_group("Wood")
+        if foot_bit and is_wood:
+            $WoodLeftFootPlayer.play()
+        elif foot_bit:
+            $GravelLeftFootPlayer.play()
+        elif is_wood:
+            $WoodRightFootPlayer.play()
+        else:
+            $GravelRightFootPlayer.play()
+        foot_bit = !foot_bit

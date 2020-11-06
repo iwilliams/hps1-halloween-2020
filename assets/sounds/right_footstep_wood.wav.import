@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/right_footstep_wood.wav-c19da8d698da77ba7b0b97d00b176dcd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/right_footstep_wood.wav"
+dest_files=[ "res://.import/right_footstep_wood.wav-c19da8d698da77ba7b0b97d00b176dcd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

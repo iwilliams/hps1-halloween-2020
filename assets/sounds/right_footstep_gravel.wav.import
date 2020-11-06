@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/right_footstep_gravel.wav-995e92a5fabbabff40ac4634d4c2c968.sample"
+
+[deps]
+
+source_file="res://assets/sounds/right_footstep_gravel.wav"
+dest_files=[ "res://.import/right_footstep_gravel.wav-995e92a5fabbabff40ac4634d4c2c968.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
