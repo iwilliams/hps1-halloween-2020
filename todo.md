@@ -25,7 +25,7 @@
 [ ] - Code for nail sfx
 [ ] - Setup props with collision, including trees (Very close to done)
 	- Revist sink collision
-[ ] - Create destructible roof
+[x] - Create destructible roof
 [x] - Nail sfx
 [x] - Change footstep sfx based on surface/area, L/R
 [x] - Set up shed (maybe need a 3 wide wall?)

@@ -27,6 +27,8 @@ func grab(to_grab: RigidBody):
     og_mass = holding.mass
     holding.mass = 1
     mode = RigidBody.MODE_RIGID
+    if holding.has_method("grab"):
+        holding.grab()
     $InteractPlayer.play(0)
     
     
@@ -57,6 +59,8 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         mode = RigidBody.MODE_CHARACTER
     elif holding && Input.is_action_just_pressed("nail") && holding.can_weld():
         holding.mode = RigidBody.MODE_STATIC
+        if holding.has_method("nail"):
+            holding.nail()
         drop()
         mode = RigidBody.MODE_CHARACTER
 

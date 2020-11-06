@@ -6,6 +6,8 @@ onready var nail_2 = get_node("Nail2")
 var nail_area = null
 var nail_2_area = null
 
+var is_nailed = false
+
 func _ready():
     nail.connect("area_entered", self, "nail_area_entered", [nail])
     nail.connect("area_exited", self, "nail_area_exited", [nail])
@@ -47,3 +49,14 @@ func _physics_process(delta):
 
 func can_weld():
     return nail_area != null and nail_2_area != null and nail_area != nail_2_area
+
+
+func grab():
+    if is_nailed:
+        $RemovePlayer.play()
+        is_nailed = false
+
+
+func nail():
+    is_nailed = true
+    $HammerPlayer.play()
