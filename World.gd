@@ -5,6 +5,7 @@ var window_progress = 0
 
 var pd5_has_played = false
 var pd6_has_played = false
+var pd9_has_played = false
 var pd11_has_played = false
 
 
@@ -24,6 +25,12 @@ func _window_frame_plank_added(window_frame: WindowFrame):
     if !pd5_has_played:
         $Dialog/pd05.play()
         pd5_has_played = true
+    if window_progress == 4 and !pd9_has_played:
+        $Dialog/pd09.play()
+        pd9_has_played = true
+        yield(get_tree().create_timer(5.0), "timeout")
+        $Dialog/pd10.play()
+        
 
 
 func _window_frame_plank_removed(window_frame: WindowFrame):

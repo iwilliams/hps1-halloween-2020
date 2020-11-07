@@ -8,7 +8,6 @@
 [ ] - Intro sequence programming
 [ ] - Storm cellar?
 [ ] - Wall of trees at area perimeter
-[ ] - Code destruction sequence for walls/roof
 [ ] - Coffin/locked room
 [ ] - Wagon/wheelbarrow?
 [ ] - Ending sequence
@@ -20,11 +19,14 @@
 [ ] - Add area to catch/remove destroyed walls
 [ ] - Distribute planks
 [ ] - Create main scene
-[ ] - Code for nail sfx
+
 [ ] - Setup props with collision, including trees (Very close to done)
 	- Revist sink collision
-[ ] - Track window progression
+
 [ ] - Implement player sfx
+[x] - Code for nail sfx
+[x] - Track window progression
+[x] - Code destruction sequence for walls/roof
 [x] - Player mumbling SFX [Trevor WIP]
 	- Maybe dialog for trying to remove an already fortified window
 	- Mabye alternates for pd5 and pd6
@@ -37,3 +39,4 @@
 [x] - Siren SFX [Trevor Wip]
 [x] - Split wood/gravel footsteps into L/R [Trevor WIP]
 [x] - Intro sequence Graphics (tv "slideshow" + glow?) [Trevor WIP]
+
