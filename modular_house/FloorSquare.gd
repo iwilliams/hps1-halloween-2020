@@ -12,7 +12,7 @@ func _get_random_panel():
     return panels.pop_front()
     
 
-func break_roof(b):
+func break_roof(b = null):
     var panel = _get_random_panel()
     if panel == null:
         return

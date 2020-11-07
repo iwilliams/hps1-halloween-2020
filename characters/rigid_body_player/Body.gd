@@ -42,18 +42,6 @@ func _integrate_forces(state):
     var head_state := PhysicsServer.body_get_direct_state(RID(head))
     head_state.transform.origin = state.transform.origin
     head_state.transform.origin.y = $Yaw.global_transform.origin.y
-    
-    return
-    
-    var xz_length = abs(dir.length())
-    var footsteps_playing = $FootstepGravelPlayer.is_playing()
-    if is_on_floor:
-        if xz_length > 0.2 and !footsteps_playing:
-            $FootstepGravelPlayer.play()
-        elif xz_length <= 0.2 and footsteps_playing:
-            $FootstepGravelPlayer.stop()
-    elif footsteps_playing:
-        $FootstepGravelPlayer.stop()
 
 
 func _process(delta):
@@ -65,11 +53,10 @@ func _process(delta):
     dir += base_transform.basis.x.normalized() * Input.get_action_strength("move_right")
 
 
-
 func _on_FootStepTimer_timeout():
     var xz_length = abs(dir.length())
     if is_on_floor and xz_length > 0.2:
-        var is_wood = $RayCast.get_collider().is_in_group("Wood")
+        var is_wood = $RayCast.is_colliding() and $RayCast.get_collider().is_in_group("Wood")
         if foot_bit and is_wood:
             $WoodLeftFootPlayer.play()
         elif foot_bit:

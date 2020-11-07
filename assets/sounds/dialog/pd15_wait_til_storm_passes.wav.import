@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd15_wait_til_storm_passes.wav-2fb7808b41fde9d853d07a060ae7d1b0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd15_wait_til_storm_passes.wav"
+dest_files=[ "res://.import/pd15_wait_til_storm_passes.wav-2fb7808b41fde9d853d07a060ae7d1b0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

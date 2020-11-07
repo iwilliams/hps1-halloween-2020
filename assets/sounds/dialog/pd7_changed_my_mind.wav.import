@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd7_changed_my_mind.wav-d61716bb8f74ce95c1b3896e6e048739.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd7_changed_my_mind.wav"
+dest_files=[ "res://.import/pd7_changed_my_mind.wav-d61716bb8f74ce95c1b3896e6e048739.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

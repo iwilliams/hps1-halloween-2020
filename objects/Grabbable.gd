@@ -21,6 +21,10 @@ func _integrate_forces(state):
             )
 
 
+func can_grab():
+    return true
+
+
 func can_weld():
     return false
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd16_wait_wait_wait.wav-09258f1e9a9cb83534d701537b12ed7a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd16_wait_wait_wait.wav"
+dest_files=[ "res://.import/pd16_wait_wait_wait.wav-09258f1e9a9cb83534d701537b12ed7a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd17_dont_look_last.wav-9977eef76f862e69f7119d159b445860.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd17_dont_look_last.wav"
+dest_files=[ "res://.import/pd17_dont_look_last.wav-9977eef76f862e69f7119d159b445860.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -12,12 +12,12 @@ func _get_random_panel():
     return panels.pop_front()
     
 
-func break_wall(b):
+func break_wall(b = null):
     var panel = _get_random_panel()
     if panel == null:
         return
         
-        
+
     var panel_local_pos = panel.transform.origin
     var panel_local_pos_target = panel_local_pos - Vector3(0, 0, 1)
     

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd12_dont_look.wav-1d1776da71cc09f32095077ce4a54f01.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd12_dont_look.wav"
+dest_files=[ "res://.import/pd12_dont_look.wav-1d1776da71cc09f32095077ce4a54f01.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

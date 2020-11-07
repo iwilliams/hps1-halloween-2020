@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd2_here_it_comes.wav-7910216551c9fbccf2f7e11b61085252.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd2_here_it_comes.wav"
+dest_files=[ "res://.import/pd2_here_it_comes.wav-7910216551c9fbccf2f7e11b61085252.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

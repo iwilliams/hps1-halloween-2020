@@ -7,6 +7,7 @@ var nail_area = null
 var nail_2_area = null
 
 var is_nailed = false
+var is_locked = false
 
 func _ready():
     nail.connect("area_entered", self, "nail_area_entered", [nail])
@@ -18,11 +19,11 @@ func _ready():
 
 func nail_area_entered(area: Area, nail_in: Area):
     if area.name == "NailArea" || area.name == "NailArea2":
-        if nail_in == nail:
+        if nail_in == nail and area != nail_2_area:
             nail_area = area
-        else:
+        elif area != nail_area:
             nail_2_area = area
-        
+
 
 func nail_area_exited(area: Area, nail_in: Area):
     if area.name == "NailArea" || area.name == "NailArea2":
@@ -51,12 +52,19 @@ func can_weld():
     return nail_area != null and nail_2_area != null and nail_area != nail_2_area
 
 
+func can_grab():
+    return !is_locked
+
+
 func grab():
     if is_nailed:
         $RemovePlayer.play()
+        nail_area.get_parent().remove_plank(self)
         is_nailed = false
 
 
 func nail():
     is_nailed = true
     $HammerPlayer.play()
+    if nail_area != null:
+        nail_area.get_parent().add_plank(self)

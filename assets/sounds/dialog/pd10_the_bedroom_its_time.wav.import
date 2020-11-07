@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd10_the_bedroom_its_time.wav-365358d3102de8ce0366b58790692f46.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd10_the_bedroom_its_time.wav"
+dest_files=[ "res://.import/pd10_the_bedroom_its_time.wav-365358d3102de8ce0366b58790692f46.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

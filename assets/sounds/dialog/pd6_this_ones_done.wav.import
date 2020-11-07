@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd6_this_ones_done.wav-cca5fbcdfd32625264f202be27f7ae18.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd6_this_ones_done.wav"
+dest_files=[ "res://.import/pd6_this_ones_done.wav-cca5fbcdfd32625264f202be27f7ae18.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
