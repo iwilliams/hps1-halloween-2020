@@ -80,3 +80,12 @@ func _coffin_plank_grabbed():
     elif !pd13_has_played:
         $Dialog/pd13.play()
         pd13_has_played = true
+        
+
+func destroy_props():
+    var props = [$Sofa, $Tv, $EntranceTable, $Chair, $Sink, $Chair2, $Table, $BedFrame]
+    for prop in props:
+        prop.mode = RigidBody.MODE_RIGID
+        prop.gravity_scale = -.5
+        prop.apply_torque_impulse(Vector3(0, .2, 0))
+        yield(get_tree().create_timer(.2), "timeout")
