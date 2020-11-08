@@ -28,11 +28,14 @@ func break_wall(b = null):
     var impulse_dir = panel_g_pos_target - panel_g_pos
     
     panel.mode = RigidBody.MODE_RIGID
+    if (panel as RigidBody).has_node("PanelSoundsBottom"):
+        panel.get_node("PanelSoundsBottom").play()
     (panel as RigidBody).apply_central_impulse(impulse_dir * 1)
     break_count += 1
     yield(get_tree().create_timer(1.0), "timeout")
     panel.get_child(panel.get_child_count() - 1).queue_free() # Kill joint
-
+    if (panel as RigidBody).has_node("PanelSoundsTop"):
+        panel.get_node("PanelSoundsTop").play()
     (panel as RigidBody).apply_torque_impulse(panel.global_transform.basis.x.normalized())
     (panel as RigidBody).apply_central_impulse(impulse_dir * 2)
 #    (panel as RigidBody).set_collision_mask_bit(4, true)

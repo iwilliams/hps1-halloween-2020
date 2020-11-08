@@ -1586,6 +1586,35 @@ tracks/4/keys = {
 "method": "break_roof"
 } ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
 
 [sub_resource type="Animation" id=55]
 resource_name = "Break2"
@@ -2248,6 +2277,8 @@ transform = Transform( 0.568442, 0, 0.822724, 0, 1, 0, -0.822724, 0, 0.568442, -
 
 [node name="Tv" parent="." instance=ExtResource( 29 )]
 transform = Transform( 0.696913, 0, 0.717156, 0, 1, 0, -0.717156, 0, 0.696913, -1.34296, 1.5966, 3.97767 )
+contacts_reported = 2
+contact_monitor = true
 
 [node name="EntranceTable" parent="." instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01503, 0.865999, 4.0055 )
@@ -2813,8 +2844,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="grabbed" from="DoorPlank" to="House/DoorFrame2" method="unlock" flags=6]
-[connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]
 [connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
+[connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break1" ]]

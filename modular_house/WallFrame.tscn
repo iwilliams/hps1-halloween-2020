@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/textures/grain.tres" type="Material" id=1]
 [ext_resource path="res://modular_house/WoodPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://modular_house/Frame.gd" type="Script" id=3]
+[ext_resource path="res://utils/PanelSounds.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "grain"
@@ -62,6 +63,11 @@ shape = SubResource( 5 )
 [node name="WoodPanel" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2125, 1.8, 0 )
 
+[node name="PanelSoundsBottom" parent="WoodPanel" instance=ExtResource( 5 )]
+
+[node name="PanelSoundsTop" parent="WoodPanel" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
 [node name="HingeJoint" type="HingeJoint" parent="WoodPanel"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
 nodes/node_a = NodePath("../../WallFrame")
@@ -72,7 +78,12 @@ angular_limit/lower = 0.0
 [node name="WoodPanel2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6375, 1.8, 0 )
 
-[node name="HingeJoint2" type="HingeJoint" parent="WoodPanel2"]
+[node name="PanelSoundsBottom" parent="WoodPanel2" instance=ExtResource( 5 )]
+
+[node name="PanelSoundsTop" parent="WoodPanel2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
+[node name="HingeJoint" type="HingeJoint" parent="WoodPanel2"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
 nodes/node_a = NodePath("../../WallFrame")
 nodes/node_b = NodePath("..")
@@ -82,7 +93,12 @@ angular_limit/lower = 0.0
 [node name="WoodPanel3" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0625, 1.8, 0 )
 
-[node name="HingeJoint3" type="HingeJoint" parent="WoodPanel3"]
+[node name="PanelSoundsBottom" parent="WoodPanel3" instance=ExtResource( 5 )]
+
+[node name="PanelSoundsTop" parent="WoodPanel3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
+[node name="HingeJoint" type="HingeJoint" parent="WoodPanel3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
 nodes/node_a = NodePath("../../WallFrame")
 nodes/node_b = NodePath("..")
@@ -92,7 +108,12 @@ angular_limit/lower = 0.0
 [node name="WoodPanel4" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4875, 1.8, 0 )
 
-[node name="HingeJoint4" type="HingeJoint" parent="WoodPanel4"]
+[node name="PanelSoundsBottom" parent="WoodPanel4" instance=ExtResource( 5 )]
+
+[node name="PanelSoundsTop" parent="WoodPanel4" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
+[node name="HingeJoint" type="HingeJoint" parent="WoodPanel4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
 nodes/node_a = NodePath("../../WallFrame")
 nodes/node_b = NodePath("..")

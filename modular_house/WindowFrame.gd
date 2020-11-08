@@ -1,4 +1,4 @@
-extends Spatial
+extends Frame
 class_name WindowFrame
 
 signal plank_added
@@ -8,6 +8,7 @@ signal window_fortified
 var plank_count = 0
 var plank_1 = null
 var plank_2 = null
+
 
 func add_plank(plank):
     if plank_count == 0:
