@@ -47,3 +47,7 @@ func _ready():
     for child in get_children():
         if child.is_in_group("Panel"):
             get_child(0).add_collision_exception_with(child)
+
+
+func destroy(b = null):
+    $AnimationPlayer.play("Destroy")
