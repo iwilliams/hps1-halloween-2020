@@ -33,7 +33,7 @@ func remove_plank(plank):
     emit_signal("plank_removed")
     
     
-func destroy(b = null):
+func destroy_window(b = null):
     var first_panels = [$DoorPanel, $DoorPanel2, $WindowPanel, $WindowPanel2]
     first_panels.shuffle()
     
