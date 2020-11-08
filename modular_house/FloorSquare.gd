@@ -27,3 +27,17 @@ func break_roof(b = null):
     (panel as RigidBody).set_collision_mask_bit(4, true)
     (panel as RigidBody).set_collision_mask_bit(5, true)
     (panel as RigidBody).set_collision_mask_bit(6, true)
+    
+
+func destroy():
+    var bars = [$RoofBar, $RoofBar2]
+    bars.shuffle()
+    var bar_one = bars[0]
+    var bar_two = bars[1]
+    
+    bar_one.mode = RigidBody.MODE_RIGID
+    bar_one.apply_torque_impulse(bar_one.global_transform.basis.z.normalized() * -.2)
+    yield(get_tree().create_timer(.2), "timeout")
+    bar_two.mode = RigidBody.MODE_RIGID
+    bar_two.apply_torque_impulse(bar_two.global_transform.basis.z.normalized() * .2)
+

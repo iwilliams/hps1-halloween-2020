@@ -18,7 +18,10 @@ func break_wall(b = null):
     if panel == null:
         return
         
+    _break_panel(panel)
+        
 
+func _break_panel(panel: RigidBody):
     var panel_local_pos = panel.transform.origin
     var panel_local_pos_target = panel_local_pos - Vector3(0, 0, 1)
     
