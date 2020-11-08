@@ -2,12 +2,14 @@ extends Frame
 
 
 func _ready():
-    $Door.add_collision_exception_with($Stairs)
-    $Door.add_collision_exception_with($WoodPanel)
-    $Door.add_collision_exception_with($WoodPanel2)
-    $Door.add_collision_exception_with($DoorPanel)
-    $Door.add_collision_exception_with($DoorPanel2)
+    var exceptions = [$Stairs, $WoodPanel, $WoodPanel2, $DoorPanel, $DoorPanel2, $FrameTop, $FrameLeft, $FrameRight, $FrameLeftMiddle, $FrameRightMiddle]
+    for excep in exceptions: 
+        $Door.add_collision_exception_with(excep)
 
 
 func unlock():
     $Door.unlock()
+
+
+func destroy_door():
+    pass

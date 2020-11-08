@@ -73,3 +73,23 @@ func destroy_window(b = null):
     _break_panel(last_panels[0])
     yield(get_tree().create_timer(.2), "timeout")
     _break_panel(last_panels[1])
+    
+    yield(get_tree().create_timer(.2), "timeout")
+    $FrameTop.mode = RigidBody.MODE_RIGID
+    $FrameTop.apply_torque_impulse(Vector3(0, .2, 0))
+    
+    yield(get_tree().create_timer(.2), "timeout")
+    $FrameLeft.mode = RigidBody.MODE_RIGID
+    $FrameLeft.apply_torque_impulse(Vector3(0, 0, .2))
+    
+    yield(get_tree().create_timer(.2), "timeout")
+    $FrameRight.mode = RigidBody.MODE_RIGID
+    $FrameRight.apply_torque_impulse(Vector3(0, 0, -.2))
+    
+    yield(get_tree().create_timer(.2), "timeout")
+    $FrameSill.mode = RigidBody.MODE_RIGID
+    $FrameSill.apply_torque_impulse(Vector3(0, 0, -.2))
+    
+    yield(get_tree().create_timer(.2), "timeout")
+    $FrameBottom.mode = RigidBody.MODE_RIGID
+    $FrameBottom.apply_torque_impulse(Vector3(0, -.2, 0))
