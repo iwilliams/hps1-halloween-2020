@@ -34,9 +34,9 @@ func break_wall(b = null):
 
     (panel as RigidBody).apply_torque_impulse(panel.global_transform.basis.x.normalized())
     (panel as RigidBody).apply_central_impulse(impulse_dir * 2)
-    (panel as RigidBody).set_collision_mask_bit(4, true)
-    (panel as RigidBody).set_collision_mask_bit(5, true)
-    (panel as RigidBody).set_collision_mask_bit(6, true)
+#    (panel as RigidBody).set_collision_mask_bit(4, true)
+#    (panel as RigidBody).set_collision_mask_bit(5, true)
+#    (panel as RigidBody).set_collision_mask_bit(6, true)
 
 
 func _ready():

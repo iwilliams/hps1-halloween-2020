@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://characters/rigid_body_player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/house/Material_008.material" type="Material" id=2]
@@ -53,6 +53,8 @@
 [ext_resource path="res://assets/sounds/dialog/pd9_no_boards_left.wav" type="AudioStream" id=51]
 [ext_resource path="res://assets/sounds/dialog/pd10_the_bedroom_its_time.wav" type="AudioStream" id=52]
 [ext_resource path="res://assets/sounds/dialog/pd8_board_here_for_reason.wav" type="AudioStream" id=53]
+[ext_resource path="res://assets/sounds/dialog/pd12_dont_look.wav" type="AudioStream" id=54]
+[ext_resource path="res://assets/sounds/dialog/pd13_dont_look.wav" type="AudioStream" id=55]
 
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 8 )
@@ -712,6 +714,454 @@ tracks/4/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=64]
+resource_name = "Break1"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("../WallFrame3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../FloorSquare4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../FloorSquare5")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../FloorSquare6")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../FloorSquare7")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../WallFrame4")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../WallFrame8")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("../WallFrame9")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("../WallFrame10")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("../WallFrame2")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("../WallFrame6")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.6, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("../WallFrame7")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.7, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("../FloorSquare3")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("../FloorSquare8")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 4.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+
+[sub_resource type="Animation" id=65]
+resource_name = "Break2"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("../WallFrame3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.3, 4.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../FloorSquare4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../FloorSquare5")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../FloorSquare6")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../FloorSquare7")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 4.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../WallFrame4")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.7, 1.5, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../WallFrame8")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("../WallFrame9")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.4, 3.3, 4.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("../WallFrame10")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.1, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("../WallFrame2")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("../WallFrame6")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.8, 3.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("../WallFrame7")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("../FloorSquare3")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("../FloorSquare8")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+
 [sub_resource type="Animation" id=58]
 resource_name = "Break1"
 length = 3.0
@@ -1051,6 +1501,20 @@ tracks/3/keys = {
 "method": "break_roof"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("../FloorSquare")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
 
 [sub_resource type="Animation" id=55]
 resource_name = "Break2"
@@ -1105,6 +1569,48 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 1.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../FloorSquare10")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../WallFrame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../FloorSquare9")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ null ],
@@ -1269,6 +1775,292 @@ extents = Vector3( 0.311437, 0.973269, 0.381651 )
 [sub_resource type="BoxShape" id=53]
 extents = Vector3( 0.5, 0.994127, 0.5 )
 
+[sub_resource type="Animation" id=66]
+resource_name = "Finale"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("House/WallFrame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 1.4, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("House/WallFrame11")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1.9, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("House/WallFrame12")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("House/WallFrame14")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("House/WallFrame16")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("House/WallFrame17")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.8, 4.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("House/WallFrame18")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("House/WallFrame20")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1.3, 3.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("House/WallFrame25")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("House/FloorSquare2")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.4, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+}, {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("House/FloorSquare10")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("House/FloorSquare14")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("House/FloorSquare11")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("House/FloorSquare15")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.4, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+}, {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("House/FloorSquare16")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 3.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath("House/FloorSquare23")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath("House/FloorSquare21")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 3.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+tracks/17/type = "method"
+tracks/17/path = NodePath("House/FloorSquare9")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+
 [node name="World" type="Spatial"]
 script = ExtResource( 41 )
 
@@ -1294,6 +2086,12 @@ stream = ExtResource( 52 )
 
 [node name="pd11" type="AudioStreamPlayer" parent="Dialog"]
 stream = ExtResource( 5 )
+
+[node name="pd12" type="AudioStreamPlayer" parent="Dialog"]
+stream = ExtResource( 54 )
+
+[node name="pd13" type="AudioStreamPlayer" parent="Dialog"]
+stream = ExtResource( 55 )
 
 [node name="Ground" type="StaticBody" parent="."]
 collision_mask = 134
@@ -1474,7 +2272,7 @@ material/0 = null
 material/1 = null
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77824, 1.10129, 2.60853 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75505, 0.726893, 3.03246 )
 
 [node name="LerpEnvironment" parent="." instance=ExtResource( 16 )]
 environment1 = ExtResource( 18 )
@@ -1626,7 +2424,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.9157
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.91577, 0, -2.33305 )
 
 [node name="WallFrame2" parent="House" instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11581, 0, 1.06696 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.81581, 0, 1.06696 )
 
 [node name="WallFrame4" parent="House" instance=ExtResource( 25 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11581, 0, -2.33305 )
@@ -1637,6 +2435,10 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.1158
 [node name="WindowFrame" parent="House" instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.11581, 0, -2.33305 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="House/WindowFrame"]
+anims/Break1 = SubResource( 64 )
+anims/Break2 = SubResource( 65 )
+
 [node name="FloorSquare4" parent="House" instance=ExtResource( 24 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.81577, 0, -2.33305 )
 
@@ -1644,7 +2446,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.8157
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.51577, 0, -0.633041 )
 
 [node name="WallFrame6" parent="House" instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81577, 0, 1.06696 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.51577, 0, 1.06696 )
 
 [node name="WallFrame7" parent="House" instance=ExtResource( 25 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81577, 0, -2.33305 )
@@ -1656,7 +2458,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5157
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.21577, 0, -0.633041 )
 
 [node name="WallFrame8" parent="House" instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51577, 0, 1.06696 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.21577, 0, 1.06696 )
 
 [node name="FloorSquare17" parent="House" instance=ExtResource( 24 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.81577, 0, -4.03305 )
@@ -1741,7 +2543,7 @@ anims/Break1 = SubResource( 62 )
 anims/Break2 = SubResource( 63 )
 
 [node name="WallFrame10" parent="House" instance=ExtResource( 25 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.21577, 0, -0.633041 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.21577, 0, -2.33304 )
 
 [node name="DoorFrame" parent="House" instance=ExtResource( 27 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.11581, 0, 2.76696 )
@@ -1856,11 +2658,17 @@ shape = SubResource( 53 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="FinalePlayer" type="AnimationPlayer" parent="."]
+anims/Finale = SubResource( 66 )
 [connection signal="grabbed" from="DoorPlank" to="House/DoorFrame2" method="unlock" flags=6]
-[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]
+[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
+[connection signal="plank_added" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break1" ]]
+[connection signal="window_fortified" from="House/WindowFrame" to="FinalePlayer" method="play" flags=6 binds= [ "Finale" ]]
+[connection signal="window_fortified" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame4" to="House/WindowFrame4/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
