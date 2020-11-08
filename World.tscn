@@ -942,6 +942,20 @@ tracks/13/keys = {
 "method": "break_roof"
 } ]
 }
+tracks/14/type = "method"
+tracks/14/path = NodePath("../DoorFrame2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
 
 [sub_resource type="Animation" id=65]
 resource_name = "Break2"
@@ -1173,6 +1187,20 @@ tracks/13/keys = {
 "values": [ {
 "args": [ null ],
 "method": "break_roof"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("../DoorFrame2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 2.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
 } ]
 }
 
@@ -2114,6 +2142,57 @@ tracks/17/keys = {
 "values": [ {
 "args": [ null ],
 "method": "break_roof"
+} ]
+}
+tracks/18/type = "method"
+tracks/18/path = NodePath("House/DoorFrame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.6, 3.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/19/type = "method"
+tracks/19/path = NodePath("House/DoorFrame3")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 1.6, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath("House/DoorFrame2")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.2, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
 } ]
 }
 
