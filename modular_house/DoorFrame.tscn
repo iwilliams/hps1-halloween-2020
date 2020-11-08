@@ -69,14 +69,42 @@ shape = SubResource( 6 )
 [node name="WoodPanel" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2125, 1.8, 0 )
 
+[node name="HingeJoint" type="HingeJoint" parent="WoodPanel"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
+nodes/node_a = NodePath("../../DoorFrame")
+nodes/node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
+
 [node name="WoodPanel2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4875, 1.8, 0 )
+
+[node name="HingeJoint2" type="HingeJoint" parent="WoodPanel2"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.1, 0 )
+nodes/node_a = NodePath("../../DoorFrame")
+nodes/node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="DoorPanel2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6375, 2.8, 0 )
 
+[node name="HingeJoint3" type="HingeJoint" parent="DoorPanel2"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.1, 0 )
+nodes/node_a = NodePath("../../DoorFrame")
+nodes/node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
+
 [node name="DoorPanel" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.0625, 2.8, 0 )
+
+[node name="HingeJoint4" type="HingeJoint" parent="DoorPanel"]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0.1, 0 )
+nodes/node_a = NodePath("../../DoorFrame")
+nodes/node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="Stairs" parent="." instance=ExtResource( 3 )]
 

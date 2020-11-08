@@ -1,4 +1,5 @@
 extends Spatial
+class_name Frame
 
 var break_count = 0
 
@@ -42,4 +43,4 @@ func break_wall(b = null):
 func _ready():
     for child in get_children():
         if child.is_in_group("Panel"):
-            $WallFrame.add_collision_exception_with(child)
+            get_child(0).add_collision_exception_with(child)
