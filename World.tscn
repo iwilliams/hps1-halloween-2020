@@ -1586,35 +1586,6 @@ tracks/4/keys = {
 "method": "break_roof"
 } ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [ null ],
-"method": "break_wall"
-}, {
-"args": [ null ],
-"method": "break_wall"
-}, {
-"args": [ null ],
-"method": "break_wall"
-}, {
-"args": [ null ],
-"method": "break_wall"
-}, {
-"args": [ null ],
-"method": "break_wall"
-}, {
-"args": [ null ],
-"method": "break_wall"
-} ]
-}
 
 [sub_resource type="Animation" id=55]
 resource_name = "Break2"
@@ -2844,13 +2815,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="grabbed" from="DoorPlank" to="House/DoorFrame2" method="unlock" flags=6]
-[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]
+[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break1" ]]
-[connection signal="window_fortified" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break2" ]]
 [connection signal="window_fortified" from="House/WindowFrame" to="FinalePlayer" method="play" flags=6 binds= [ "Finale" ]]
+[connection signal="window_fortified" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame4" to="House/WindowFrame4/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
