@@ -14,7 +14,9 @@ extents = Vector3( 0.13152, 0.0421926, 0.0487283 )
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.027293, 0.0934283, 0.0231546 )
 
-[node name="Sink" type="StaticBody"]
+[node name="Sink" type="StaticBody" groups=[
+"Wood",
+]]
 collision_layer = 128
 collision_mask = 166
 

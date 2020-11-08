@@ -2813,8 +2813,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="grabbed" from="DoorPlank" to="House/DoorFrame2" method="unlock" flags=6]
-[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="body_entered" from="House/DebugBox" to="House/FloorSquare13" method="break_roof"]
+[connection signal="body_entered" from="House/DebugBox" to="House/WallFrame14" method="break_wall"]
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break1" ]]
