@@ -133,7 +133,7 @@ func _coffin_plank_grabbed():
         
 
 func destroy_props():
-    var props = [$Sofa, $Tv, $EntranceTable, $Chair, $Sink, $Chair2, $Table, $BedFrame]
+    var props = [$Sofa, $Tv, $EntranceTable, $Chair, $Sink, $Chair2, $Table, $BedFrame, $Storage/Shelves, $Storage/Shelves2]
     for prop in props:
         prop.mode = RigidBody.MODE_RIGID
         prop.gravity_scale = -.5

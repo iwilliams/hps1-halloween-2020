@@ -4,7 +4,6 @@ var break_count = 0
 
 
 func break_shed():
-    
     if break_count == 0:
         $AnimationPlayer.play("Break1")
     elif break_count == 1:
