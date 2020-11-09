@@ -46,27 +46,28 @@ func destroy_window(b = null):
     _break_panel(first_panels[3])
     yield(get_tree().create_timer(.2), "timeout")
     
-    var first_plank
-    var last_plank
-    
-    if plank_1.global_transform.origin.y > plank_2.global_transform.origin.y:
-        first_plank = plank_1
-        last_plank = plank_2
-    else:
-        first_plank = plank_2
-        last_plank = plank_1
+    if plank_1 != null and plank_2 != null:
+        var first_plank
+        var last_plank
         
-    first_plank.mode = RigidBody.MODE_RIGID
-    first_plank.gravity_scale = -.5
-    first_plank.get_node("RemovePlayer").play()
+        if plank_1.global_transform.origin.y > plank_2.global_transform.origin.y:
+            first_plank = plank_1
+            last_plank = plank_2
+        else:
+            first_plank = plank_2
+            last_plank = plank_1
+            
+        first_plank.mode = RigidBody.MODE_RIGID
+        first_plank.gravity_scale = -.5
+        first_plank.get_node("RemovePlayer").play()
 
-    yield(get_tree().create_timer(.5), "timeout")
+        yield(get_tree().create_timer(.5), "timeout")
+        
+        last_plank.mode = RigidBody.MODE_RIGID
+        last_plank.gravity_scale = -.5
+        last_plank.get_node("RemovePlayer").play()
     
-    last_plank.mode = RigidBody.MODE_RIGID
-    last_plank.gravity_scale = -.5
-    last_plank.get_node("RemovePlayer").play()
-    
-    yield(get_tree().create_timer(.2), "timeout")
+        yield(get_tree().create_timer(.2), "timeout")
     
     var last_panels = [$WoodPanel, $WoodPanel2]
     last_panels.shuffle()

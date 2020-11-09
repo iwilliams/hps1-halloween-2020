@@ -63,6 +63,9 @@ func _room_trigger_body_entered(body: PhysicsBody):
     if !pd11_has_played:
         pd11_has_played = true
         $Dialog/pd11.play()
+        $HeavyWindPlayer.play()
+        $HeavyWindPlayer/Tween.interpolate_property($HeavyWindPlayer, 'volume_db', -80, 1, 15)
+        $HeavyWindPlayer/Tween.start()
 
 
 func _door_plank_grab_attempted():

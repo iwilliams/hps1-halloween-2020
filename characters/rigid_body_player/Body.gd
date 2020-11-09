@@ -3,7 +3,7 @@ extends RigidBody
 var is_on_floor = false
 
 var dir = Vector3.ZERO
-var speed = 5
+export(float) var speed = 5
 var accel = 50
 var accel_air = 7
 var jump = 15
