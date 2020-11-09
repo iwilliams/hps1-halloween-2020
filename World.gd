@@ -1,6 +1,8 @@
 extends Spatial
 
 
+signal game_ended
+
 var window_progress = 0
 
 var pd4_has_played = false
@@ -12,6 +14,8 @@ var pd10_a_has_played = false
 var pd11_has_played = false
 var pd12_has_played = false
 var pd13_has_played = false
+
+export(bool) var should_hide_body = false
 
 
 func _ready():
@@ -105,9 +109,10 @@ func _room_trigger_body_entered(body: PhysicsBody):
         pd11_has_played = true
         $Dialog/pd11.play()
         $HeavyWindPlayer.play()
-        $HeavyWindPlayer/Tween.interpolate_property($HeavyWindPlayer, 'volume_db', -80, 1, 15)
+        $HeavyWindPlayer/Tween.interpolate_property($HeavyWindPlayer, 'volume_db', -80, -8, 15)
         $HeavyWindPlayer/Tween.interpolate_property($Player/Body/Yaw/Pitch/Camera2, 'trauma', 0, .2, 15)
         $HeavyWindPlayer/Tween.start()
+        $House/WindowFrame/StaticBody.queue_free()
 
 
 func _door_plank_grab_attempted():
@@ -134,3 +139,8 @@ func destroy_props():
         prop.gravity_scale = -.5
         prop.apply_torque_impulse(Vector3(0, .2, 0))
         yield(get_tree().create_timer(.2), "timeout")
+
+
+func thunder_check():
+    if should_hide_body:
+        $Coffin/body.visible = false

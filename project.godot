@@ -44,14 +44,15 @@ _global_script_class_icons={
 
 [application]
 
-config/name="hps1-halloween-2020"
-run/main_scene="res://World.tscn"
+config/name="Prepper"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=320
 window/size/height=240
+window/size/fullscreen=true
 window/size/test_width=960
 window/size/test_height=720
 window/stretch/mode="viewport"

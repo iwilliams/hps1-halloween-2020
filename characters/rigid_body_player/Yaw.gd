@@ -32,11 +32,11 @@ func camera_toggle():
 
 
 func _process(_delta):
-    if Input.is_action_just_pressed("ui_cancel"):
-        if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-            Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-        else:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#    if Input.is_action_just_pressed("ui_cancel"):
+#        if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+#            Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#        else:
+#            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
     if Input.is_action_pressed("look_left") or Input.is_action_pressed("look_right"):
