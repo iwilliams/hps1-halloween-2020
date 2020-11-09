@@ -20,6 +20,7 @@ func break_roof(b = null):
     panel.mode = RigidBody.MODE_RIGID
     break_count += 1
     yield(get_tree().create_timer(1.0), "timeout")
+    panel.get_node("PanelSounds").play()
     panel.get_child(panel.get_child_count() - 1).queue_free() # Kill joint
 
     (panel as RigidBody).apply_torque_impulse(panel.global_transform.basis.x.normalized() * -1)
@@ -36,8 +37,10 @@ func destroy():
     var bar_two = bars[1]
     
     bar_one.mode = RigidBody.MODE_RIGID
+    bar_one.get_node("PanelSounds").play()
     bar_one.apply_torque_impulse(bar_one.global_transform.basis.z.normalized() * -.2)
     yield(get_tree().create_timer(.2), "timeout")
     bar_two.mode = RigidBody.MODE_RIGID
+    bar_two.get_node("PanelSounds").play()
     bar_two.apply_torque_impulse(bar_two.global_transform.basis.z.normalized() * .2)
 

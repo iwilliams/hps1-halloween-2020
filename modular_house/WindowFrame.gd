@@ -76,20 +76,25 @@ func destroy_window(b = null):
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameTop.mode = RigidBody.MODE_RIGID
+    $FrameBottom/PanelSounds.play()
     $FrameTop.apply_torque_impulse(Vector3(0, .2, 0))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameLeft.mode = RigidBody.MODE_RIGID
+    $FrameLeft/PanelSounds.play()
     $FrameLeft.apply_torque_impulse(Vector3(0, 0, .2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameRight.mode = RigidBody.MODE_RIGID
+    $FrameRight/PanelSounds.play()
     $FrameRight.apply_torque_impulse(Vector3(0, 0, -.2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameSill.mode = RigidBody.MODE_RIGID
+    $FrameSill/PanelSounds.play()
     $FrameSill.apply_torque_impulse(Vector3(0, 0, -.2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameBottom.mode = RigidBody.MODE_RIGID
+    $FrameBottom/PanelSounds.play()
     $FrameBottom.apply_torque_impulse(Vector3(0, -.2, 0))

@@ -17,22 +17,27 @@ func destroy_door(b = null):
         yield(get_tree().create_timer(1), "timeout")
 
     $FrameTop.mode = RigidBody.MODE_RIGID
+    $FrameTop/PanelSounds.play()
     $FrameTop.apply_torque_impulse(Vector3(0, .2, 0))
 
     yield(get_tree().create_timer(.2), "timeout")
     $FrameLeft.mode = RigidBody.MODE_RIGID
+    $FrameLeft/PanelSounds.play()
     $FrameLeft.apply_torque_impulse(Vector3(0, 0, .2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameRight.mode = RigidBody.MODE_RIGID
+    $FrameRight/PanelSounds.play()
     $FrameRight.apply_torque_impulse(Vector3(0, 0, -.2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameRightMiddle.mode = RigidBody.MODE_RIGID
+    $FrameRightMiddle/PanelSounds.play()
     $FrameRightMiddle.apply_torque_impulse(Vector3(0, 0, -.2))
     
     yield(get_tree().create_timer(.2), "timeout")
     $FrameLeftMiddle.mode = RigidBody.MODE_RIGID
+    $FrameLeftMiddle/PanelSounds.play()
     $FrameLeftMiddle.apply_torque_impulse(Vector3(0, 0, -.2))
     
     yield(get_tree().create_timer(.2), "timeout")

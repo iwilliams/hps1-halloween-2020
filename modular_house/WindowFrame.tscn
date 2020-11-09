@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/grain.tres" type="Material" id=1]
 [ext_resource path="res://modular_house/WoodPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://modular_house/DoorPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://modular_house/WindowPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://modular_house/WindowFrame.gd" type="Script" id=5]
+[ext_resource path="res://utils/PanelSounds.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/green_wood.tres" type="Material" id=7]
 
 [sub_resource type="ArrayMesh" id=17]
@@ -227,6 +228,9 @@ shape = SubResource( 4 )
 mesh = SubResource( 11 )
 material/0 = ExtResource( 1 )
 
+[node name="PanelSounds" parent="FrameTop" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 [node name="FrameSill" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 2, 0 )
 collision_layer = 64
@@ -261,6 +265,9 @@ shape = SubResource( 7 )
 transform = Transform( -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 0, -0.55, -1.74846e-08 )
 shape = SubResource( 7 )
 
+[node name="PanelSounds" parent="FrameSill" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 [node name="FrameLeft" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 2, 0 )
 collision_layer = 64
@@ -278,6 +285,9 @@ material/0 = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="FrameLeft"]
 shape = SubResource( 12 )
+
+[node name="PanelSounds" parent="FrameLeft" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="FrameRight" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2, 0 )
@@ -297,6 +307,9 @@ material/0 = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="FrameRight"]
 shape = SubResource( 12 )
 
+[node name="PanelSounds" parent="FrameRight" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 [node name="FrameBottom" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.13846, 0 )
 collision_layer = 64
@@ -314,3 +327,6 @@ material/0 = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="FrameBottom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.140389, 0 )
 shape = SubResource( 15 )
+
+[node name="PanelSounds" parent="FrameBottom" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
