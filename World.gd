@@ -61,13 +61,13 @@ func _window_frame_plank_added(window_frame: WindowFrame):
         pd5_has_played = true
         yield(possible_players[0], "finished")
         pd5_has_played = false
- 
+
 
 func _window_frame_plank_removed(window_frame: WindowFrame):
+    window_progress -= .5
     var p = [$Dialog/pd07, $Dialog/pd07_alt]
     p.shuffle()
     p[0].play()
-
 
 
 func _window_frame_window_fortified(window_frame: WindowFrame):
