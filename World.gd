@@ -17,6 +17,9 @@ func _ready():
     OS.set_window_position(screen_size*0.5 - window_size*0.5)
     
     randomize()
+    
+    $Player/Body/Yaw/Pitch/Camera2.trauma = 0
+    
     var window_frames = get_tree().get_nodes_in_group("Window")
     for f in window_frames:
         var window_frame = f as WindowFrame
@@ -65,6 +68,7 @@ func _room_trigger_body_entered(body: PhysicsBody):
         $Dialog/pd11.play()
         $HeavyWindPlayer.play()
         $HeavyWindPlayer/Tween.interpolate_property($HeavyWindPlayer, 'volume_db', -80, 1, 15)
+        $HeavyWindPlayer/Tween.interpolate_property($Player/Body/Yaw/Pitch/Camera2, 'trauma', 0, .2, 15)
         $HeavyWindPlayer/Tween.start()
 
 

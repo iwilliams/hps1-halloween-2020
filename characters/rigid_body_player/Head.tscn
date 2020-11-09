@@ -30,6 +30,7 @@ can_sleep = false
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 

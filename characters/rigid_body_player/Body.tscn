@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/rigid_body_player/Yaw.gd" type="Script" id=1]
 [ext_resource path="res://characters/rigid_body_player/Body.gd" type="Script" id=2]
+[ext_resource path="res://characters/rigid_body_player/Camera.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/right_footstep_gravel.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sounds/left_footstep_gravel.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/left_footstep_wood.wav" type="AudioStream" id=6]
@@ -65,6 +66,7 @@ current = true
 
 [node name="Camera2" type="Camera" parent="Yaw/Pitch"]
 current = true
+script = ExtResource( 3 )
 
 [node name="FootStepTimer" type="Timer" parent="."]
 process_mode = 0
