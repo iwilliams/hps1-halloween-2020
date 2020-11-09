@@ -1,8 +1,9 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://characters/rigid_body_player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/house/Material_008.material" type="Material" id=2]
 [ext_resource path="res://assets/models/house/Material_007.material" type="Material" id=3]
+[ext_resource path="res://Shed.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/dialog/pd11_dont_look.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/models/house/Material_005.material" type="Material" id=6]
 [ext_resource path="res://assets/textures/grass.png" type="Texture" id=7]
@@ -1623,6 +1624,91 @@ tracks/4/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=41]
+resource_name = "Break1"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("WallFrame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WallFrame2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "Break2"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/path = NodePath("WallFrame3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+}, {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("WallFrame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_wall"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("FloorSquare")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "break_roof"
+} ]
+}
+
+[sub_resource type="Animation" id=43]
+resource_name = "Break3"
+length = 3.0
+
 [sub_resource type="BoxShape" id=34]
 extents = Vector3( 0.311437, 0.973269, 0.381651 )
 
@@ -3135,6 +3221,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771122, 0.653099, -5.33538 
 
 [node name="Shed" type="Spatial" parent="."]
 transform = Transform( 0.721207, 0, 0.692719, 0, 1, 0, -0.692719, 0, 0.721207, -13.7348, 0, 4.4245 )
+script = ExtResource( 4 )
 
 [node name="FloorSquare" parent="Shed" instance=ExtResource( 24 )]
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -1.7, 0, -1.7 )
@@ -3150,6 +3237,11 @@ transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, -1.
 
 [node name="WallFrame3" parent="Shed" instance=ExtResource( 25 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.7, 0, -1.7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shed"]
+anims/Break1 = SubResource( 41 )
+anims/Break2 = SubResource( 42 )
+anims/Break3 = SubResource( 43 )
 
 [node name="Coffin" type="StaticBody" parent="."]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.692536, 0.585775, 0.42292 )
@@ -4138,6 +4230,8 @@ shape = SubResource( 40 )
 [node name="CollisionShape23" type="CollisionShape" parent="TreeWall/Collision"]
 transform = Transform( 0.985371, 0, 0.170421, 0, 1, 0, -0.170421, 0, 0.985371, -20.2959, 3.3735, 4.99566 )
 shape = SubResource( 40 )
+[connection signal="grabbed" from="Plank12" to="Shed" method="break_shed" flags=6]
+[connection signal="grabbed" from="Plank13" to="Shed" method="break_shed" flags=6]
 [connection signal="grabbed" from="DoorPlank" to="House/DoorFrame2" method="unlock" flags=6]
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]

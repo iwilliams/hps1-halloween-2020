@@ -74,7 +74,7 @@ func grab():
         if nail_area != null:
             nail_area.get_parent().remove_plank(self)
         is_nailed = false
-        emit_signal("grabbed")
+    emit_signal("grabbed")
     is_held = true
 
 
