@@ -29,6 +29,9 @@ func break_roof(b = null):
     (panel as RigidBody).set_collision_mask_bit(5, true)
     (panel as RigidBody).set_collision_mask_bit(6, true)
     
+    if break_count == 2:
+        $RainParticlesSquare.lifetime = 1.8
+    
 
 func destroy():
     var bars = [$RoofBar, $RoofBar2]

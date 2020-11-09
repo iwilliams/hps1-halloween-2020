@@ -1,34 +1,35 @@
 [gd_scene load_steps=8 format=2]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=51]
 colors = PoolColorArray( 0, 0, 0, 1, 0.0869141, 0.0869141, 0.0869141, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=45]
+gradient = SubResource( 51 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=46]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=47]
+curve = SubResource( 46 )
 
-[sub_resource type="ParticlesMaterial" id=5]
-trail_size_modifier = SubResource( 4 )
+[sub_resource type="ParticlesMaterial" id=52]
+trail_size_modifier = SubResource( 47 )
 emission_shape = 2
 emission_box_extents = Vector3( 10, 1, 10 )
 flag_align_y = true
 direction = Vector3( 0, 1, 0 )
+spread = 1.0
 initial_velocity = 1.0
-color_ramp = SubResource( 2 )
+color_ramp = SubResource( 45 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=49]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_cull_mode = 2
 params_billboard_mode = 2
 
-[sub_resource type="QuadMesh" id=7]
-material = SubResource( 6 )
+[sub_resource type="QuadMesh" id=50]
+material = SubResource( 49 )
 size = Vector2( 0.01, 1 )
 
 [node name="RainParticles" type="Particles"]
@@ -36,5 +37,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.36, -9.58162 )
 amount = 10000
 lifetime = 2.0
 visibility_aabb = AABB( -10.9243, -7.52665, -12.9859, 21.8486, 7.71639, 25.9718 )
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 7 )
+process_material = SubResource( 52 )
+draw_pass_1 = SubResource( 50 )

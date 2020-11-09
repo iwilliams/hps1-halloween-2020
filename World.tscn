@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://characters/rigid_body_player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/house/Material_008.material" type="Material" id=2]
@@ -312,6 +312,47 @@ shader_param/dither_intensity = 0.1
 shader_param/color_depth = 31
 shader_param/dither_luminosity = Vector3( 0.299, 0.587, 0.114 )
 shader_param/albedoTex = ExtResource( 57 )
+
+[sub_resource type="CubeMesh" id=44]
+size = Vector3( 20, 2, 20 )
+
+[sub_resource type="Gradient" id=51]
+colors = PoolColorArray( 0, 0, 0, 1, 0.0869141, 0.0869141, 0.0869141, 1 )
+
+[sub_resource type="GradientTexture" id=45]
+gradient = SubResource( 51 )
+
+[sub_resource type="Curve" id=46]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=47]
+curve = SubResource( 46 )
+
+[sub_resource type="ParticlesMaterial" id=52]
+trail_size_modifier = SubResource( 47 )
+emission_shape = 2
+emission_box_extents = Vector3( 5, 1, 2.5 )
+flag_align_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 1.0
+initial_velocity = 1.0
+color_ramp = SubResource( 45 )
+
+[sub_resource type="SpatialMaterial" id=49]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+params_billboard_mode = 2
+
+[sub_resource type="QuadMesh" id=50]
+material = SubResource( 49 )
+size = Vector2( 0.01, 1 )
+
+[sub_resource type="CubeMesh" id=53]
+size = Vector3( 10, 2, 5 )
+
+[sub_resource type="SpatialMaterial" id=54]
+albedo_color = Color( 0.741176, 0.109804, 0.109804, 1 )
 
 [sub_resource type="Animation" id=20]
 length = 10.0
@@ -2940,16 +2981,160 @@ max_db = 6.0
 weight = 0.0140846
 
 [node name="RainParticles" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6391, 6.98399, 2.16974 )
-visibility_aabb = AABB( -26.2518, -7.52665, -12.9859, 52.5035, 7.71639, 25.9718 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3697, 13.3296, 2.16974 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
 
 [node name="RainParticles2" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8188, 6.98399, 2.16974 )
-visibility_aabb = AABB( -26.2518, -7.52665, -12.9859, 52.5035, 7.71639, 25.9718 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3697, 13.3296, -17.6956 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
 
 [node name="RainParticles3" parent="." instance=ExtResource( 17 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.41753, 6.98399, 14.463 )
-visibility_aabb = AABB( -26.2518, -7.52665, -12.9859, 52.5035, 7.71639, 25.9718 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65931, 13.3296, 15.0714 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10145, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles12" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.467, 13.3296, 21.3275 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10145, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles4" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -22.747, 13.3296, -4.33368 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles5" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -25.2005, 13.3296, 10.5692 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles11" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -18.2338, 13.3296, 24.0423 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles6" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -4.75466, 13.3296, -21.2761 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles13" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -20.5881, 13.3296, -33.9051 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles14" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.685545, 0, -0.72803, 0, 1, 0, 0.72803, 0, 0.685545, -31.9362, 13.3296, -23.2192 )
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 44 )
+material/0 = null
+
+[node name="RainParticles7" type="Particles" parent="."]
+transform = Transform( 0.162712, 0, -0.986674, 0, 1, 0, 0.986674, 0, 0.162712, -10.6125, 13.3296, 1.74819 )
+amount = 2500
+lifetime = 2.0
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+process_material = SubResource( 52 )
+draw_pass_1 = SubResource( 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles7"]
+transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 53 )
+material/0 = SubResource( 54 )
+
+[node name="RainParticles8" type="Particles" parent="."]
+transform = Transform( -0.719062, 0, -0.694946, 0, 1, 0, 0.694946, 0, -0.719062, -9.50074, 13.3296, -8.74022 )
+amount = 2500
+lifetime = 2.0
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+process_material = SubResource( 52 )
+draw_pass_1 = SubResource( 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 53 )
+material/0 = SubResource( 54 )
+
+[node name="RainParticles10" type="Particles" parent="."]
+transform = Transform( -0.719062, 0, -0.694946, 0, 1, 0, 0.694946, 0, -0.719062, -18.5545, 13.3296, -18.1082 )
+amount = 2500
+lifetime = 2.0
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+process_material = SubResource( 52 )
+draw_pass_1 = SubResource( 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 53 )
+material/0 = SubResource( 54 )
+
+[node name="RainParticles9" type="Particles" parent="."]
+transform = Transform( -0.999058, 0, -0.0434018, 0, 1, 0, 0.0434018, 0, -0.999058, -3.39737, 13.3296, -9.25427 )
+amount = 2500
+lifetime = 2.0
+visibility_aabb = AABB( -10.9243, -20.2785, -12.9859, 21.8486, 33.22, 25.9718 )
+process_material = SubResource( 52 )
+draw_pass_1 = SubResource( 50 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RainParticles9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.9181, 0 )
+visible = false
+mesh = SubResource( 53 )
+material/0 = SubResource( 54 )
 
 [node name="Plank8" parent="." instance=ExtResource( 20 )]
 transform = Transform( -4.31107e-08, -0.165208, -0.986259, -7.22148e-09, 0.986259, -0.165208, 1, -8.88178e-16, -4.37114e-08, 0.428153, 0.795294, 0.120497 )
@@ -3323,7 +3508,7 @@ __meta__ = {
 }
 
 [node name="Storage" type="Spatial" parent="."]
-transform = Transform( -0.506452, 0, -0.862268, 0, 1, 0, 0.862268, 0, -0.506452, -10.2464, 0, -13.5821 )
+transform = Transform( -0.735315, 0, -0.677725, 0, 1, 0, 0.677725, 0, -0.735315, -12.5419, 0, -11.4059 )
 
 [node name="DoorFrame" parent="Storage" instance=ExtResource( 27 )]
 
@@ -4236,8 +4421,8 @@ shape = SubResource( 40 )
 [connection signal="plank_added" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame3" to="House/WindowFrame3/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break1" ]]
-[connection signal="window_fortified" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break2" ]]
 [connection signal="window_fortified" from="House/WindowFrame" to="FinalePlayer" method="play" flags=6 binds= [ "Finale" ]]
+[connection signal="window_fortified" from="House/WindowFrame" to="House/WindowFrame/AnimationPlayer" method="queue" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
 [connection signal="window_fortified" from="House/WindowFrame6" to="House/WindowFrame6/AnimationPlayer" method="play" flags=6 binds= [ "Break2" ]]
 [connection signal="plank_added" from="House/WindowFrame4" to="House/WindowFrame4/AnimationPlayer" method="play" flags=6 binds= [ "Break1" ]]
