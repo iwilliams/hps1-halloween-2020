@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd5_alt_nearly_there.wav-f4bee4f6c13c4f2c869dbde5d5b00ded.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd5_alt_nearly_there.wav"
+dest_files=[ "res://.import/pd5_alt_nearly_there.wav-f4bee4f6c13c4f2c869dbde5d5b00ded.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

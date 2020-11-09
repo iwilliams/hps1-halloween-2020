@@ -1,5 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://utils/rain_material.tres" type="Material" id=1]
+
 [sub_resource type="Gradient" id=51]
 colors = PoolColorArray( 0, 0, 0, 1, 0.0869141, 0.0869141, 0.0869141, 1 )
 
@@ -22,14 +24,8 @@ spread = 1.0
 initial_velocity = 1.0
 color_ramp = SubResource( 45 )
 
-[sub_resource type="SpatialMaterial" id=49]
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-params_cull_mode = 2
-params_billboard_mode = 2
-
 [sub_resource type="QuadMesh" id=50]
-material = SubResource( 49 )
+material = ExtResource( 1 )
 size = Vector2( 0.01, 1 )
 
 [node name="RainParticles" type="Particles"]

@@ -1,20 +1,19 @@
 
 
-[ ] - Add siren to game
-[ ] - Rain occlusion
-[ ] - Rain levels
-[ ] - Increasing storm SFX
-[ ] - Intro sequence programming
-[ ] - Wall of trees at area perimeter
-[ ] - Coffin/locked room
+[x] - Add siren to game
+[x] - Rain occlusion
+[x] - Increasing storm SFX
+[x] - Intro sequence programming
+[x] - Wall of trees at area perimeter
+[x] - Coffin/locked room
 [ ] - Wagon/wheelbarrow?
 [x] - Ending sequence
 [x] - Itch.io page
-[ ] - Check all materials possibly add color reduction shader?
+[x] - Check all materials possibly add color reduction shader?
 [x] - Screen shake
 [ ] - Randomize thunder
 [x] - Add area to catch/remove destroyed walls
-[ ] - Distribute planks
+[x] - Distribute planks
 [ ] - Create main scene
 
 [ ] - Setup props with collision, including trees (Very close to done)

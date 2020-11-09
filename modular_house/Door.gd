@@ -2,6 +2,7 @@ extends Grabbalbe
 
 export(bool) var is_locked = false
 
+signal grab_attempted
 
 func _ready():
     if is_locked:
@@ -9,6 +10,8 @@ func _ready():
 
 
 func can_grab():
+    if is_locked:
+        emit_signal("grab_attempted")
     return !is_locked
 
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pd10_a_finish_other_window_first.wav-bd59d5fa0726908457b57b9ec88fc612.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dialog/pd10_a_finish_other_window_first.wav"
+dest_files=[ "res://.import/pd10_a_finish_other_window_first.wav-bd59d5fa0726908457b57b9ec88fc612.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

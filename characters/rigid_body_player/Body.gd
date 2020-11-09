@@ -55,7 +55,7 @@ func _process(delta):
 
 func _on_FootStepTimer_timeout():
     var xz_length = abs(dir.length())
-    if is_on_floor and xz_length > 0.2:
+    if speed > .5 && is_on_floor and xz_length > 0.2:
         var is_wood = $RayCast.is_colliding() and $RayCast.get_collider().is_in_group("Wood")
         if foot_bit and is_wood:
             $WoodLeftFootPlayer.play()
