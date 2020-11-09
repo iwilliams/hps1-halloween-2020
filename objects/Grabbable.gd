@@ -1,6 +1,8 @@
 extends RigidBody
 class_name Grabbalbe
 
+signal grabbed
+
 onready var backwards_pd: BackwardsPD = get_node("BackwardsPD")
 
 var target_basis = null
@@ -30,6 +32,7 @@ func can_weld():
 
 
 func grab():
+    emit_signal("grabbed")
     return
 
 

@@ -1,6 +1,5 @@
 extends Grabbalbe
 
-signal grabbed
 signal grab_attempted
 
 onready var nail = get_node("Nail")
@@ -11,6 +10,7 @@ var nail_2_area = null
 
 export(bool) var is_nailed = false
 export(bool) var is_locked = false
+var is_held = false
 
 func _ready():
     if (is_nailed):
@@ -43,7 +43,7 @@ func _physics_process(delta):
     if is_nailed:
         nail.get_child(1).visible = true
         nail_2.get_child(1).visible = true
-    else:
+    elif is_held:
         var nail_threshold = .97
         if nail_area != null:
             var diff = nail_area.global_transform.basis.z.dot(nail.global_transform.basis.z)
@@ -75,6 +75,12 @@ func grab():
             nail_area.get_parent().remove_plank(self)
         is_nailed = false
         emit_signal("grabbed")
+    is_held = true
+
+
+func drop():
+    is_held = false
+    .drop()
 
 
 func nail():

@@ -15,3 +15,8 @@ func can_grab():
 func unlock():
     is_locked = false
     mode = RigidBody.MODE_RIGID
+
+
+func slam_open():
+    apply_central_impulse(global_transform.basis.z.normalized() * 2)
+    $SlamPlayer.play()
